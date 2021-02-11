@@ -1,0 +1,35 @@
+<div class="main">
+
+    <div class="content">
+        <div class="loginForm">
+            <div style="margin-bottom: 12px;">
+                <h2 style="letter-spacing:2px;margin-bottom: 24px;font-size: medium;"><b>Admin Login</b></h2>
+                <!-- <img class="logo" src="/assets/images/logo.png" alt="No Preview Available"> -->
+            </div>
+            <form [formGroup]="loginForm">
+            <div class="inputsForm">
+                <div>
+                    <input type="email" formControlName="email" placeholder="Email Id" autocomplete="off">
+                </div>
+                <div  *ngIf="loginCredentials.email.touched&&loginCredentials.email.errors" style="text-align: center;color: red;font-size: small;margin: 4px;">
+                    <div *ngIf="loginCredentials.email.errors.required">*Email is <strong>required</strong></div>
+                    <div *ngIf="loginCredentials.email.errors.email">*Enter a <strong>valid Email</strong></div>
+                    
+                </div>
+                <div>
+                    <input type="password" formControlName="password" placeholder="Password" autocomplete="off">
+                </div>
+                <div  *ngIf="loginCredentials.password.touched&&loginCredentials.password.errors" style="text-align: center;color: red;font-size: small;margin: 4px;">
+                    *Password is <strong>required</strong>
+                </div>
+                <div style=" margin-top: 12px;">
+                    <button class="loginBtn" mat-button (click)="onLogin(loginForm.value)">Login</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div>
+        <img src="/assets/images/delivery_boy.gif">
+    </div> -->
+</div>
