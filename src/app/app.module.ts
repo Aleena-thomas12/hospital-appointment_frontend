@@ -12,10 +12,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HomeLayoutComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

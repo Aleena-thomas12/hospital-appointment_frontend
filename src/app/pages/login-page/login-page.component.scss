@@ -1,3 +1,9 @@
+@import "../../app.component.scss";
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+  }
 .content
 {
     height: 95vh;
@@ -15,38 +21,32 @@ input{
     border-radius: 50px;
     box-sizing: border-box;
     font-weight: bold;
+    &:focus
+    {
+        outline: none;
+        border: 2px solid black;
+    }
   }
-  input:focus
-  {
-      outline: none;
-      border: 2px solid black;
-  }
-  
+  @keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
+}
 .loginForm
 {
+    min-width: 40%;
     text-align: center;
     padding: 12px;
+    animation: movefromtop 2s ease-out 1s;
+    animation-fill-mode: backwards;
+    
 }
-.inputsForm
-{
-  text-align: left;
-}
-.logo
-{
-    // height: 88px;
-    width: 60%;
-    // border-radius: 50px;    
-}
+
+
 
 .loginBtn
 {
-    background-color: dodgerblue;
+    background-color: $primary-btn-color;
     color: white;
     width: 100%;    
-}
-.footer
-{
-    text-align: center;
-    font-size: smaller;
-    font-weight: bold;
 }

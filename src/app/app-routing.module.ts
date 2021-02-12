@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 const routes: Routes = [{
@@ -11,14 +12,14 @@ const routes: Routes = [{
   path:"login",
   component:LoginPageComponent
 },
-// {
-//   path:"home",
-//   component:HomeLayoutComponent,
-//   loadChildren: () =>
+{
+  path:"home",
+  component:HomeLayoutComponent,
+  loadChildren: () =>
   
-//     import("./pages/home-layout/home-layout.module").then((m) => m.HomeLayoutModule,),
+    import("./pages/home-layout/home-layout.module").then((m) => m.HomeLayoutModule,),
 
-// }
+}
 ];
 
 @NgModule({
