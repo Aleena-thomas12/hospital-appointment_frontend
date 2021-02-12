@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
   }
   onLogin(loginData) {
     console.log("Logined")
-    this.router.navigate(['home'])
+    this.router.navigate(['sidemenu'])
 
     // if (!this.loginCredentials.email.errors && !this.loginCredentials.password.errors) {
       //////Write Api Here

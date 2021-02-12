@@ -1,0 +1,46 @@
+@import "../../app.component.scss";
+
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+  }
+
+.toolbar{
+    background-color: $color-secondary;
+    color: $primary-text-color;
+}
+.search_bar{
+  // margin-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+  position: fixed;
+  background-color: white;
+  z-index: 2;
+}
+.search_bar--input{
+  border-radius: 12%;
+}
+.filter{
+  color: $primary-text-color;
+  &:hover{
+    color: $color-territory;
+  }
+  
+  }
+  .nav-list--btn{
+    &:hover{
+      background-color: $primary-text-color;
+      color: white;
+    }
+    &:active{
+      background-color: $primary-text-color;
+      color: white;
+    }
+  }
+  .page__content{
+    padding: 1rem;}
+// ::ng-deep .mat-form-field-outline {
+//     background-color: antiquewhite !important;
+//     border-radius: 2rem !important;
+//   }

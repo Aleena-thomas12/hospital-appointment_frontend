@@ -13,7 +13,7 @@ const routes: Routes = [{
   component:LoginPageComponent
 },
 {
-  path:"home",
+  path:"sidemenu",
   component:HomeLayoutComponent,
   loadChildren: () =>
   
