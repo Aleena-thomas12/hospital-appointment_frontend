@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,10 @@ import { MatListModule } from "@angular/material/list";
 import {MatIconModule} from '@angular/material/icon';
 import { AppointmentsPageComponent } from './pages/appointments-page/appointments-page.component';
 import { AdminInfoComponent } from './pages/admin-info/admin-info.component';
+import * as bootstrap from "bootstrap";
+import * as $ from "jquery";
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { EmailChangeComponent } from './pages/email-change/email-change.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,17 +32,20 @@ import { AdminInfoComponent } from './pages/admin-info/admin-info.component';
     HomeLayoutComponent,
     HomePageComponent,
     AppointmentsPageComponent,
-    AdminInfoComponent
+    AdminInfoComponent,
+    EmailChangeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,   
     MatMenuModule,
+    MatBottomSheetModule,
     MatExpansionModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatListModule,
+    MatDialogModule,
     MatButtonModule,
     MatChipsModule,
     MatSidenavModule,

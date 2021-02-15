@@ -3,8 +3,31 @@
     <header class="h3 std-padding--top">
       Account Settings
     </header>
-    <div class="container">
-      <p>Hardanger, Norway</p>
+    <div class="container std-padding--top">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Admin Email</mat-label>
+          <input matInput placeholder="XXXXX@yyyyy.com" type="email" disabled>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Admin Password</mat-label>
+          <input matInput placeholder="XXXXXX" type="password" disabled>
+          <mat-icon matSuffix>vpn_key</mat-icon>
+        </mat-form-field>
+      </p>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 std-margin--top std-margin--bottom">
+
+          <button mat-raised-button class="primary_btn" (click)="emailChange()">Change Email</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 std-margin--top std-margin--bottom ">
+          <button mat-raised-button class="primary_btn">Change Password</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
