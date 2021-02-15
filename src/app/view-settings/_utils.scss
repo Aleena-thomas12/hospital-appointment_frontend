@@ -11,11 +11,30 @@
 .pointer {
   cursor: pointer;
 }
-
+.std-padding{
+  &--top{
+  padding-top: 1rem;
+  }
+}
 .block {
   display: block;
 }
-
+.flex{
+  display: flex;
+}
+.block-line{
+  border: 1px solid grey;
+  background-color: grey;
+  height: 4px;
+}
+.no-padding{
+  padding: 0px;
+}
+.std-margin{
+  &--top{
+    margin-top: 1rem;
+  }
+}
 .margin {
   &_top {
     &--1rem {

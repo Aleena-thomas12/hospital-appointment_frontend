@@ -19,12 +19,16 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatListModule } from "@angular/material/list";
 import {MatIconModule} from '@angular/material/icon';
+import { AppointmentsPageComponent } from './pages/appointments-page/appointments-page.component';
+import { AdminInfoComponent } from './pages/admin-info/admin-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HomeLayoutComponent,
-    HomePageComponent
+    HomePageComponent,
+    AppointmentsPageComponent,
+    AdminInfoComponent
   ],
   imports: [
     BrowserModule,
