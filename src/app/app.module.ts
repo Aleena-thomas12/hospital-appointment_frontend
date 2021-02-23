@@ -28,6 +28,9 @@ import {MatTableModule} from '@angular/material/table';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { EmailChangeComponent } from './pages/email-change/email-change.component';
 import { ViewDoctorsComponent } from './pages/view-doctors/view-doctors.component';
+import { ViewNursesComponent } from './pages/view-nurses/view-nurses.component';
+import { DoctorProfilePageComponent } from './pages/doctor-profile-page/doctor-profile-page.component';
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,9 @@ import { ViewDoctorsComponent } from './pages/view-doctors/view-doctors.componen
     AppointmentsPageComponent,
     AdminInfoComponent,
     EmailChangeComponent,
-    ViewDoctorsComponent
+    ViewDoctorsComponent,
+    ViewNursesComponent,
+    DoctorProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { ViewDoctorsComponent } from './pages/view-doctors/view-doctors.componen
     MatDialogModule,
     MatButtonModule,
     MatChipsModule,
+    MatTabsModule,
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,

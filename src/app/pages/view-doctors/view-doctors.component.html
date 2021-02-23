@@ -24,8 +24,12 @@
               <b>Name:&nbsp;</b>{{'Dr.'+ doctor?.name}}<br>
               <b>Department:</b> {{doctor?.dept}}<br>
             </section>
+            
 
           </div>
+          <footer style="text-align: right;">
+            <button mat-button (click)="viewProfile()"> View Profile</button>
+          </footer>
         </div>
       </mat-expansion-panel>
 

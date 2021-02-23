@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-12">
+    <div class="profile_pic">
+      <div class="profile_pic--placeholder">
+        Profile Pic Goes Here
+      </div>
+    </div>
+    <div class="description">
+      <span class="block text-center full-width roboto--wtbold font-large">{{'Dr. '+data?.name}}</span>
+      <mat-list>
+        <div mat-subheader>Work</div>
+        <mat-list-item>
+          <mat-icon mat-list-icon>domain</mat-icon>
+          <div mat-line><b>Department</b></div>
+          <div mat-line> {{data?.dept}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+            <mat-icon mat-list-icon>watch</mat-icon>
+            <div mat-line><b>Timings</b></div>
+            <div mat-line> 12:00PM to 2:00PM &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+            </div>
+          </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader>Appointments</div>
+        <mat-list-item>
+          <mat-icon mat-list-icon>event_available</mat-icon>
+          <div mat-line> Upcoming </div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon>event_note</mat-icon>
+          <div mat-line> Past </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="col-lg-9 col-md-9 col-sm-12">
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Personal Info"> Content 1 </mat-tab>
+      <mat-tab label="Work Timings"> Content 2 </mat-tab>
+      <mat-tab label="History"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</div>

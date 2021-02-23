@@ -1,39 +1,50 @@
+.roboto {
+  font-family: 'Roboto Condensed', sans-serif;
 
-.roboto{
-    font-family: 'Roboto Condensed', sans-serif;   
-    &--wt300{
-        font-weight: 300;  
-    }
-    &--wtbold{
-        font-weight: bolder;  
-    }
+  &--wt300 {
+    font-weight: 300;
+  }
 
-}
-.nerko{
-    font-family: 'Nerko One', cursive;   
-    &--wt300{
-        font-weight: 300;  
-    }
-    &--wtbold{
-        font-weight: bolder;  
-    }
+  &--wtbold {
+    font-weight: bolder;
+  }
 
 }
-.font{
-    &-xlarge{
-        
+
+.nerko {
+  font-family: 'Nerko One', cursive;
+
+  &--wt300 {
+    font-weight: 300;
+  }
+
+  &--wtbold {
+    font-weight: bolder;
+  }
+
+}
+
+.font {
+  &-xlarge {
+
     font-size: x-large;
-    }
-    &-large{
-        
-        font-size: large;
-        }
+  }
+
+  &-large {
+
+    font-size: large;
+  }
+  &-small {
+
+    font-size: small;
+  }
 }
-.ls{
-    &_h1{
-        &--primary{
-            
-        letter-spacing: 0.1rem;
-        }
-    }   
+
+.ls {
+  &_h1 {
+    &--primary {
+
+      letter-spacing: 0.1rem;
+    }
+  }
 }

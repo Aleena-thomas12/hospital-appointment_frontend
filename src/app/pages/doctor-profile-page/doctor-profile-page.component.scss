@@ -1,0 +1,19 @@
+@import "../../app.component.scss";
+.profile_pic{
+    // display: flex;
+    height: 30vh;
+    padding: 2rem;
+    // background-color: azure;
+    &--placeholder{
+
+        margin: auto;
+        height: 25vh;
+        min-width: 15vw;
+        color: white;
+        background-color: skyblue;
+    }
+    
+}
+.description{
+    margin-top: 2rem;
+}
