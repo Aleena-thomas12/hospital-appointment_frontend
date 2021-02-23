@@ -1,0 +1,34 @@
+<div class="content">
+  <header>
+    <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="Search Doctors...">
+  </header>
+  <section class="content_top">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let doctor of doctors">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{'Dr.'+ doctor?.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{doctor?.dept}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="profile_section">
+              <section>
+                   <div class="profile_section--image">
+
+                   </div>
+              </section>
+            <section class="profile_section--description">
+              <b>Name:&nbsp;</b>{{'Dr.'+ doctor?.name}}<br>
+              <b>Department:</b> {{doctor?.dept}}<br>
+            </section>
+
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </section>
+</div>

@@ -24,7 +24,10 @@ import { AdminInfoComponent } from './pages/admin-info/admin-info.component';
 import * as bootstrap from "bootstrap";
 import * as $ from "jquery";
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatTableModule} from '@angular/material/table';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { EmailChangeComponent } from './pages/email-change/email-change.component';
+import { ViewDoctorsComponent } from './pages/view-doctors/view-doctors.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import { EmailChangeComponent } from './pages/email-change/email-change.componen
     HomePageComponent,
     AppointmentsPageComponent,
     AdminInfoComponent,
-    EmailChangeComponent
+    EmailChangeComponent,
+    ViewDoctorsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,8 @@ import { EmailChangeComponent } from './pages/email-change/email-change.componen
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule,
+    FilterPipeModule,
     BrowserAnimationsModule
   ],
   providers: [],

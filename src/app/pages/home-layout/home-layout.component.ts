@@ -15,7 +15,7 @@ export class HomeLayoutComponent implements OnInit {
     { id: 1, name: "Dashboard",icon:'dashboard', url: "/sidemenu/home" },
     { id: 2, name: "Appointments",icon:'event_note', url: "/sidemenu/appointment-history" },
     { id: 3, name: "Admin Info",icon:'admin_panel_settings', url: "/sidemenu/admin-info" },
-    { id: 4, name: "Doctors",icon:'local_hospital', url: "/sidemenu/policy-page" },
+    { id: 4, name: "Doctors",icon:'local_hospital', url: "/sidemenu/view-doctors" },
     { id: 5, name: "Nurses",icon:'local_pharmacy', url: "/sidemenu/account-settings" },
     { id: 6, name: "Logout",icon:'logout',url: "/sidemenu/logout" },
   ];
