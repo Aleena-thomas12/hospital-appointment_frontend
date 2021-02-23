@@ -1,0 +1,5 @@
+
+<div class="loading" *ngIf="!status">
+  <mat-spinner class="loading--spinner" [diameter]="50" ></mat-spinner>
+</div>
+<p *ngIf="status">personal-info-tab works! {{empId}}</p>

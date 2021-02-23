@@ -1,9 +1,11 @@
 .right-aligned {
   text-align: right;
 }
+
 .left-aligned {
   text-align: left;
 }
+
 .full-width {
   width: 100%;
 }
@@ -11,36 +13,45 @@
 .pointer {
   cursor: pointer;
 }
-.std-padding{
-  &--top{
-  padding-top: 1rem;
+
+.std-padding {
+  &--top {
+    padding-top: 1rem;
   }
 }
+
 .block {
   display: block;
 }
+
 .inline-block {
   display: inline-block;
 }
-.flex{
+
+.flex {
   display: flex;
 }
-.block-line{
+
+.block-line {
   border: 1px solid grey;
   background-color: grey;
   height: 4px;
 }
-.no-padding{
+
+.no-padding {
   padding: 0px;
 }
-.std-margin{
-  &--top{
+
+.std-margin {
+  &--top {
     margin-top: 1rem;
   }
-  &--bottom{
+
+  &--bottom {
     margin-bottom: 1rem;
   }
 }
+
 .margin {
   &_top {
     &--1rem {
@@ -67,13 +78,24 @@
   }
 
 }
-.primary{
-  &_btn{
+
+.primary {
+  &_btn {
     background-color: $primary-btn-color;
     color: white;
-    &:hover{
+
+    &:hover {
       background-color: white;
       color: black;
     }
+  }
+}
+
+.loading {
+  display: flex;
+  height: 40vh;
+
+  &--spinner {
+    margin: auto;
   }
 }

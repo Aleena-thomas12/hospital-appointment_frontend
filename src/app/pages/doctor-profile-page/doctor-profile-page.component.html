@@ -37,8 +37,10 @@
 
   <div class="col-lg-9 col-md-9 col-sm-12">
     <mat-tab-group mat-stretch-tabs>
-      <mat-tab label="Personal Info"> Content 1 </mat-tab>
-      <mat-tab label="Work Timings"> Content 2 </mat-tab>
+      <mat-tab label="Personal Info"> 
+          <app-personal-info-tab emp_type="1"  emp_id="7645"></app-personal-info-tab>
+      </mat-tab>
+      <mat-tab label="Work Timings"><app-work-timingsab  emp_type="1"  emp_id="7645"></app-work-timingsab> </mat-tab>
       <mat-tab label="History"> Content 3 </mat-tab>
     </mat-tab-group>
   </div>

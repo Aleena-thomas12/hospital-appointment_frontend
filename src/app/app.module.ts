@@ -31,6 +31,11 @@ import { ViewDoctorsComponent } from './pages/view-doctors/view-doctors.componen
 import { ViewNursesComponent } from './pages/view-nurses/view-nurses.component';
 import { DoctorProfilePageComponent } from './pages/doctor-profile-page/doctor-profile-page.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { PersonalInfoTabComponent } from './pages/personal-info-tab/personal-info-tab.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { WorkTimingsabComponent } from './pages/work-timingsab/work-timingsab.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +47,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     EmailChangeComponent,
     ViewDoctorsComponent,
     ViewNursesComponent,
-    DoctorProfilePageComponent
+    DoctorProfilePageComponent,
+    PersonalInfoTabComponent,
+    WorkTimingsabComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +66,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatChipsModule,
     MatTabsModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
