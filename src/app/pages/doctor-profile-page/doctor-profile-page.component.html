@@ -16,11 +16,11 @@
           </div>
         </mat-list-item>
         <mat-list-item>
-            <mat-icon mat-list-icon>watch</mat-icon>
-            <div mat-line><b>Timings</b></div>
-            <div mat-line> 12:00PM to 2:00PM &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
-            </div>
-          </mat-list-item>
+          <mat-icon mat-list-icon>watch</mat-icon>
+          <div mat-line><b>Timings</b></div>
+          <div mat-line> 12:00PM to 2:00PM &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+          </div>
+        </mat-list-item>
         <mat-divider></mat-divider>
         <div mat-subheader>Appointments</div>
         <mat-list-item>
@@ -37,11 +37,12 @@
 
   <div class="col-lg-9 col-md-9 col-sm-12">
     <mat-tab-group mat-stretch-tabs>
-      <mat-tab label="Personal Info"> 
-          <app-personal-info-tab emp_type="1"  emp_id="7645"></app-personal-info-tab>
+      <mat-tab label="Personal Info">
+        <app-personal-info-tab emp_type="1" emp_id="7645"></app-personal-info-tab>
       </mat-tab>
-      <mat-tab label="Work Timings"><app-work-timingsab  emp_type="1"  emp_id="7645"></app-work-timingsab> </mat-tab>
-      <mat-tab label="History"> Content 3 </mat-tab>
+      <mat-tab label="Appointments">
+        Appointments
+      </mat-tab>
     </mat-tab-group>
   </div>
 

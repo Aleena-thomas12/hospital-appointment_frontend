@@ -22,6 +22,9 @@
                 <div  *ngIf="loginCredentials.password.touched&&loginCredentials.password.errors" style="text-align: center;color: red;font-size: small;margin: 4px;">
                     *Password is <strong>required</strong>
                 </div>
+                <div *ngIf="error_info.state" style="text-align: center;color: red;font-size: small;margin: 4px;">
+                   {{error_info?.message}}
+                </div>
                 <div style=" margin-top: 12px;">
                     <button class="loginBtn" mat-button (click)="onLogin(loginForm.value)">Login</button>
                 </div>

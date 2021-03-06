@@ -33,9 +33,13 @@ import { DoctorProfilePageComponent } from './pages/doctor-profile-page/doctor-p
 import {MatTabsModule} from '@angular/material/tabs';
 import { PersonalInfoTabComponent } from './pages/personal-info-tab/personal-info-tab.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { WorkTimingsabComponent } from './pages/work-timingsab/work-timingsab.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +53,7 @@ import { WorkTimingsabComponent } from './pages/work-timingsab/work-timingsab.co
     ViewNursesComponent,
     DoctorProfilePageComponent,
     PersonalInfoTabComponent,
-    WorkTimingsabComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,12 @@ import { WorkTimingsabComponent } from './pages/work-timingsab/work-timingsab.co
     MatIconModule,
     MatTableModule,
     FilterPipeModule,
-    BrowserAnimationsModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]
