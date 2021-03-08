@@ -12,24 +12,24 @@
         <mat-list-item>
           <mat-icon mat-list-icon>domain</mat-icon>
           <div mat-line><b>Department</b></div>
-          <div mat-line> {{data?.dept}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+          <div mat-line> {{data?.dept_name}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
           </div>
         </mat-list-item>
-        <mat-list-item>
+        <mat-list-item *ngIf="data.available_time">
           <mat-icon mat-list-icon>watch</mat-icon>
           <div mat-line><b>Timings</b></div>
-          <div mat-line> 12:00PM to 2:00PM &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+          <div mat-line > {{data?.available_time}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <div mat-subheader>Appointments</div>
+        <div mat-subheader>Availability</div>
         <mat-list-item>
-          <mat-icon mat-list-icon>event_available</mat-icon>
-          <div mat-line> Upcoming </div>
-        </mat-list-item>
-        <mat-list-item>
-          <mat-icon mat-list-icon>event_note</mat-icon>
-          <div mat-line> Past </div>
+          <div mat-line> 
+            
+            <mat-slide-toggle [checked]="data.active">
+          {{data.active?'Available':'Not Available'}}
+        </mat-slide-toggle>
+          </div>
         </mat-list-item>
       </mat-list>
     </div>
@@ -38,7 +38,7 @@
   <div class="col-lg-9 col-md-9 col-sm-12">
     <mat-tab-group mat-stretch-tabs>
       <mat-tab label="Personal Info">
-        <app-personal-info-tab emp_type="1" emp_id="7645"></app-personal-info-tab>
+        <app-personal-info-tab emp_type="1" emp_id="{{id}}"></app-personal-info-tab>
       </mat-tab>
       <mat-tab label="Appointments">
         Appointments

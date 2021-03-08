@@ -1,1 +1,15 @@
 @import "../../app.component.scss";
+.input{
+    &_outer{
+        display: flex;
+        width: 100%;
+    }
+    &_inner{
+        margin: auto;
+    }
+
+}
+.save-btn{
+    background-color: dodgerblue;
+    color: white;
+}

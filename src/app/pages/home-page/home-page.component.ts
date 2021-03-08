@@ -8,6 +8,7 @@ import { HomePageService } from 'src/app/services/HomePage/home-page.service';
 })
 export class HomePageComponent implements OnInit {
 
+  counts:any
   constructor(private home_page: HomePageService) { 
 
     this.getHomeData();
@@ -24,6 +25,7 @@ export class HomePageComponent implements OnInit {
 
   handleResponseData(data) {
     console.log(data)
+    this.counts=data;
   }
   handleError(error) {
     console.log(error)

@@ -15,16 +15,16 @@
   <div class="row" *ngFor="let appointment of appointments">
     <div class="flex std-margin--top">
          <div class="block-line full-width"></div>
-         <div class="text-center full-width font-large">{{appointment?.date}}</div>
+         <div class="text-center full-width font-large">{{appointment[0]?.date}}</div>
          <div class="block-line full-width"></div>
     </div>
    
-    <div class="col-lg-4 col-md-4 col-sm-12 std-margin--top" *ngFor="let eachApp of appointment.data">
+    <div class="col-lg-4 col-md-4 col-sm-12 std-margin--top" *ngFor="let eachApp of appointment">
       <div class="custom-card">
         <span style="float: right;"><mat-icon class="pointer" [matMenuTriggerFor]="menu">more_vert</mat-icon></span>
         <b>Patient Name:</b>&nbsp;{{eachApp?.pat_name}}<br>
-        <b>Doctor Name: </b>&nbsp;Dr.Martin Raj<br>
-        <b>Department : </b>&nbsp;Nephrology<br>
+        <b>Doctor Name: </b>&nbsp;{{'Dr.' + eachApp?.doct_name}}<br>
+        <b>Department : </b>&nbsp;{{deptname_finder(eachApp.dept_id)}}<br>
         <b>Appointment Time: </b>&nbsp;{{eachApp?.time}}
       </div>
     </div>
@@ -40,6 +40,6 @@
 
 </div>
 
-    <button mat-mini-fab color="warn" aria-label="Filter" class="sticky-btn">
+    <!-- <button mat-mini-fab color="warn" aria-label="Filter" class="sticky-btn">
         <mat-icon>filter_alt</mat-icon>
-      </button>
+      </button> -->

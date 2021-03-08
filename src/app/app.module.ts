@@ -38,8 +38,9 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatListModule,
     MatDialogModule,
+    MatSlideToggleModule,
     MatButtonModule,
+    MatSelectModule,
     MatChipsModule,
     MatTabsModule,
     MatSidenavModule,

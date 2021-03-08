@@ -1,4 +1,48 @@
 <div class="loading" *ngIf="!status">
-  <mat-spinner class="loading--spinner" [diameter]="50" ></mat-spinner>
+  <mat-spinner class="loading--spinner" [diameter]="50"></mat-spinner>
 </div>
-<p *ngIf="status">personal-info-tab works! {{empId}}</p>
+<div *ngIf="status">
+  <div class="input_outer">
+    <div class="input_inner">
+      <p style="text-align: center;margin-top: 12px;font-size: larger;">
+        <b>Personal Info</b>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name </mat-label>
+          <input matInput placeholder="Name" [(ngModel)]="data.name">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Address </mat-label>
+          <textarea matInput placeholder="Address" [(ngModel)]="data.address" cdkTextareaAutosize
+          cdkAutosizeMinRows="5"
+          cdkAutosizeMaxRows="8"></textarea>
+          <mat-icon matSuffix>home</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>&nbsp;Select a Department</mat-label>
+          <mat-select [(value)]="data.dept_id">
+            <mat-option *ngFor="let dept of departments;" value="dept.id">{{dept.name}}</mat-option>
+          </mat-select>
+          <mat-icon matPrefix>business</mat-icon>
+          <mat-hint>Current Department:<strong>{{data.dept_name}}</strong></mat-hint>
+        </mat-form-field>
+      </p>
+      <p style="margin-top: 1rem;">
+        <mat-form-field appearance="outline">
+          <mat-label>Years of Experience </mat-label>
+          <input matInput placeholder="exp" [(ngModel)]="data.exp" type="number">
+          <mat-icon matSuffix>work</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+
+  </div>
+<footer style="text-align: center;"><button mat-button  class="save-btn">Save Changes</button></footer>
+
+</div>

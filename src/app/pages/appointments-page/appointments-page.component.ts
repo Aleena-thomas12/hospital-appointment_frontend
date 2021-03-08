@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
 
 @Component({
   selector: 'app-appointments-page',
@@ -6,29 +7,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appointments-page.component.scss']
 })
 export class AppointmentsPageComponent implements OnInit {
-  appointments:any=[{date:"2020-02-08",data:[
-    {id:1,pat_name:"Trijo S",time:"10.00AM"},
-    {id:2,pat_name:"Dfsa S",time:"11.00AM"},
-    {id:3,pat_name:"Trdsfijo S",time:"11.10AM"},
-    {id:4,pat_name:"Tridsfjo S",time:"11.20AM"},
-    {id:5,pat_name:"Trdsfijo S",time:"11.45AM"}
 
-  
-  ]},
-  {date:"2020-01-28",data:[
-    {id:1,pat_name:"Trijo S",time:"10.00AM"},
-    {id:2,pat_name:"Dfsa S",time:"11.00AM"},
-    {id:3,pat_name:"Trdsfijo S",time:"11.10AM"},
-    {id:4,pat_name:"Tridsfjo S",time:"11.20AM"},
-    {id:5,pat_name:"Trdsfijo S",time:"11.45AM"}
-
-  
-  ]}
-
-]
-  constructor() { }
+  departments: any
+  appointments: any = []
+  constructor(private app: AppointmentsService) {
+    this.getAllAppointments()
+  }
 
   ngOnInit(): void {
   }
 
+
+  getAllAppointments() {
+    this.app.getallAppointments().subscribe(
+      data => this.handleResponseData(data),
+      error => this.handleError(error)
+    );
+  }
+  deptname_finder(dept_id) {
+    let temp = ""
+    this.departments.filter(dpt => {
+      if (dpt.id == dept_id) { temp = dpt.name }
+    })
+    return temp;
+  }
+ 
+  handleResponseData(data) {
+    this.departments = data.departments;
+    console.log(data, "Recieved Data")
+    this.appointments = data.appointments;
+  }
+  handleError(error) {
+    console.log(error)
+  }
 }

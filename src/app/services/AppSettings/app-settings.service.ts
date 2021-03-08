@@ -15,7 +15,6 @@ export class AppSettingsService {
     .set("Accept", "application/json")
     .set("Authorization", "Bearer "+token );
     
-    console.log(headers,"Tokem")
     return headers;
   }
 }

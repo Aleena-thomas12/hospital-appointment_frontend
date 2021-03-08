@@ -2,7 +2,7 @@
   <header>
     <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="Search Doctors...">
   </header>
-  <section class="content_top">
+  <section class="content_top" *ngIf="doctors.length">
     <mat-accordion>
       <mat-expansion-panel *ngFor="let doctor of doctors">
         <mat-expansion-panel-header>
@@ -22,17 +22,22 @@
               </section>
             <section class="profile_section--description">
               <b>Name:&nbsp;</b>{{'Dr.'+ doctor?.name}}<br>
-              <b>Department:</b> {{doctor?.dept}}<br>
+              <b>Department:</b> {{doctor?.dept_name +' Department'}}<br>
             </section>
             
 
           </div>
           <footer style="text-align: right;">
-            <button mat-button (click)="viewProfile()"> View Profile</button>
+            <button class="view-btn" mat-button (click)="viewProfile(doctor.id)"> View Profile</button>
           </footer>
         </div>
       </mat-expansion-panel>
 
     </mat-accordion>
+  </section>
+  <section class="content_top" *ngIf="!doctors.length" style="text-align:center"> 
+    <b>
+      No Doctors Registered yet!
+    </b>
   </section>
 </div>
