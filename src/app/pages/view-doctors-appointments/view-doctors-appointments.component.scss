@@ -1,0 +1,42 @@
+@import "../../app.component.scss";
+
+.row{
+    --bs-gutter-x:0px;
+}
+[class^="col"]  {
+    padding: 8px;
+    // cursor: pointer;
+   
+  }
+.border-grid{
+    border: 1px solid grey;
+}
+  .custom-card{
+    // width: 250px;
+    padding: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // text-align: center;
+    &--title{
+        margin-top: 1rem;
+        font-weight: bold;
+        font-size:large;
+        letter-spacing: 4px;
+    }
+    &:hover{
+        background-color: $primary-btn-color;
+        color: white    ;
+    }
+  }
+  .heading_1{
+      font-size: x-large;
+      font-weight: bolder;
+  }
+  .sticky-btn{
+   
+      bottom: 1rem;
+      right: 1rem;
+  }
+//   .search_bar{
+//     position: fixed;
+//     z-index: 999;
+//   }

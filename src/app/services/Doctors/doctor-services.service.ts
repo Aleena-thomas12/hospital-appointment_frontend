@@ -29,6 +29,21 @@ export class DoctorServicesService {
     })
     );
    }
-
+ updateDoctorDetails(data){
+  const headers = this.appSettings.getHttpClientHeaders();
+  return this.httpClient
+      .post<any>(this.url + "update_doctor_info", data, { headers }).pipe(map(res => {
+        return res
+      })
+      );
+ }
+ getDoctorAppointments(data){
+  const headers = this.appSettings.getHttpClientHeaders();
+  return this.httpClient
+  .get<any>(this.url + "doct_appointments?doct_id=" + data, { headers }).pipe(map(res => {
+    return res  
+  })
+  );
+ }
    
 }

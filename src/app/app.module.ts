@@ -41,6 +41,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import { MessaageToastersComponent } from './Toasters/messaage-toasters/messaage-toasters.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ViewDoctorsAppointmentsComponent } from './pages/view-doctors-appointments/view-doctors-appointments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,12 +57,15 @@ import {MatSelectModule} from '@angular/material/select';
     ViewNursesComponent,
     DoctorProfilePageComponent,
     PersonalInfoTabComponent,
+    MessaageToastersComponent,
+    ViewDoctorsAppointmentsComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,   
+    MatSnackBarModule,
     MatMenuModule,
     MatBottomSheetModule,
     MatExpansionModule,

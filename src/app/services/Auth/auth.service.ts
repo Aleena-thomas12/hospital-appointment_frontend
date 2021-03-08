@@ -13,7 +13,6 @@ url:any
     this.url=utils.getApiPath()
    }
    onLogin(loginData){
-      console.log(loginData,"Services")
       return this.httpClient
       .post<any>(this.url + "login", loginData).pipe(map(res => {
         return res

@@ -15,7 +15,7 @@
   <div class="row" *ngFor="let appointment of appointments">
     <div class="flex std-margin--top">
          <div class="block-line full-width"></div>
-         <div class="text-center full-width font-large">{{appointment[0]?.date}}</div>
+         <div class="text-center full-width font-large">{{appointment[0]?.date|date}}</div>
          <div class="block-line full-width"></div>
     </div>
    

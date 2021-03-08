@@ -27,7 +27,7 @@
         <mat-form-field appearance="outline">
           <mat-label>&nbsp;Select a Department</mat-label>
           <mat-select [(value)]="data.dept_id">
-            <mat-option *ngFor="let dept of departments;" value="dept.id">{{dept.name}}</mat-option>
+            <mat-option *ngFor="let dept of departments;" [value]="dept.id">{{dept.name}}</mat-option>
           </mat-select>
           <mat-icon matPrefix>business</mat-icon>
           <mat-hint>Current Department:<strong>{{data.dept_name}}</strong></mat-hint>
@@ -43,6 +43,6 @@
     </div>
 
   </div>
-<footer style="text-align: center;"><button mat-button  class="save-btn">Save Changes</button></footer>
+<footer style="text-align: center;"><button mat-button  class="save-btn" (click)="saveChanges()">Save Changes</button></footer>
 
 </div>
