@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-12">
     <div class="profile_pic">
@@ -19,17 +18,16 @@
         <mat-list-item *ngIf="data.available_time">
           <mat-icon mat-list-icon>watch</mat-icon>
           <div mat-line><b>Timings</b></div>
-          <div mat-line > {{data?.available_time}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
+          <div mat-line> {{data?.available_time}} &nbsp;<mat-icon style="font-size: 16px;">create</mat-icon>
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>
         <div mat-subheader>Availability</div>
         <mat-list-item>
-          <div mat-line> 
-            
-            <mat-slide-toggle [checked]="data.active">
-          {{data.active?'Available':'Not Available'}}
-        </mat-slide-toggle>
+          <div mat-line>
+            <mat-slide-toggle  [(ngModel)]="data.active" (change)="changeAvailability()">
+              {{data.active?'Available':'Not Available'}}
+            </mat-slide-toggle>
           </div>
         </mat-list-item>
       </mat-list>
@@ -42,7 +40,7 @@
         <app-personal-info-tab emp_type="1" emp_id="{{id}}"></app-personal-info-tab>
       </mat-tab>
       <mat-tab label="Appointments">
-       <app-view-doctors-appointments emp_id="{{id}}"></app-view-doctors-appointments>
+        <app-view-doctors-appointments emp_id="{{id}}"></app-view-doctors-appointments>
       </mat-tab>
     </mat-tab-group>
   </div>

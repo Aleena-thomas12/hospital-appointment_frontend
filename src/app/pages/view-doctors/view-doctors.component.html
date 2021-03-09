@@ -4,7 +4,7 @@
   </header>
   <section class="content_top" *ngIf="doctors.length">
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let doctor of doctors">
+      <mat-expansion-panel *ngFor="let doctor of doctors;let i=index">
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{'Dr.'+ doctor?.name}}
@@ -23,6 +23,10 @@
             <section class="profile_section--description">
               <b>Name:&nbsp;</b>{{'Dr.'+ doctor?.name}}<br>
               <b>Department:</b> {{doctor?.dept_name +' Department'}}<br>
+              <mat-slide-toggle  [(ngModel)]="doctor.active" (change)="changeAvailability(i)">
+                {{doctor.active?'Available':'Not Available'}}
+              </mat-slide-toggle>
+              <!-- (change)="changeAvailability(doct.id,doct.active)" -->
             </section>
             
 
