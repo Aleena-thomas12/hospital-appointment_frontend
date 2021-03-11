@@ -29,10 +29,20 @@ Nurses Data is not available right now. Try again Later.
                 <mat-slide-toggle  [(ngModel)]="nurse.active" (change)="changeAvailability(i)">
                   {{nurse.active?'Available':'Not Available'}}
                 </mat-slide-toggle>
+              
               </section>
+            
   
             </div>
           </div>
+          <footer style="display:flex">
+            <div class="full-width" style="text-align: center;">
+               <button mat-raised-button (click)="editNurse(nurse.id)">Edit Details</button>
+            </div>
+            <div class="full-width" style="background: center;">
+              <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Delete</button>
+           </div>
+          </footer>
         </mat-expansion-panel>
   
       </mat-accordion>

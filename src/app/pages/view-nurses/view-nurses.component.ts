@@ -47,6 +47,9 @@ export class ViewNursesComponent implements OnInit {
 
     this.router.navigate(['/sidemenu/add-nurse'])
   }
+  editNurse(id){
+    this.router.navigate(['sidemenu/edit-nurse'], { queryParams: { nurse_view: id } })
+  }
   presentToast(msg) {
     this.snackBar.open(msg, '', {
       duration: 3000

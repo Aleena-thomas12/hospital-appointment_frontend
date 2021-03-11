@@ -12,7 +12,10 @@
       </span>
     </mat-form-field>
   </section>
-  <div>
+  <div *ngIf="!appointments.length" style="text-align: center;font-weight: bold;">
+No Appointments to Show.
+  </div>
+  <div *ngIf="appointments.length">
     <p class="heading_1 text-center">
       Appointments History
     </p>

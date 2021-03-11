@@ -45,4 +45,20 @@ export class NursesService {
       })
       );
   }
+  getNurseInfo(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .get<any>(this.url + "get-nurse-info?nurse_id="+data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  editNurseInfo(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "edit-nurse-info?", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }
