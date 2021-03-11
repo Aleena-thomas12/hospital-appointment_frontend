@@ -44,6 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MessaageToastersComponent } from './Toasters/messaage-toasters/messaage-toasters.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewDoctorsAppointmentsComponent } from './pages/view-doctors-appointments/view-doctors-appointments.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { ViewDoctorsAppointmentsComponent } from './pages/view-doctors-appointme
     MatFormFieldModule,
     ReactiveFormsModule,
     MatListModule,
+    DragDropModule,
     MatDialogModule,
     MatSlideToggleModule,
     MatButtonModule,

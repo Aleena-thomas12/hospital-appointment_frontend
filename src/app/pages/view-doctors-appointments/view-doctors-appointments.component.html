@@ -1,8 +1,8 @@
 <div class="loading" *ngIf="!status">
   <mat-spinner class="loading--spinner" [diameter]="50"></mat-spinner>
 </div>
-<div *ngIf="status">
-  <section class="full-width search_bar">
+<div *ngIf="status" class="content">
+  <section class="full-width search_bar" style="margin-top: 1rem;">
     <mat-form-field appearance="outline" class="full-width">
       <mat-icon matPrefix>search</mat-icon>
       <input matInput placeholder="Search Appointments" class=" search_bar--input" style="margin-left: 12px;"

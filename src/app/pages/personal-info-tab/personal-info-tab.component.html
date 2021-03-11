@@ -1,7 +1,7 @@
 <div class="loading" *ngIf="!status">
   <mat-spinner class="loading--spinner" [diameter]="50"></mat-spinner>
 </div>
-<div *ngIf="status">
+<div *ngIf="status" class="content">
   <div class="input_outer">
     <div class="input_inner">
       <p style="text-align: center;margin-top: 12px;font-size: larger;">
@@ -17,9 +17,8 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Address </mat-label>
-          <textarea matInput placeholder="Address" [(ngModel)]="data.address" cdkTextareaAutosize
-          cdkAutosizeMinRows="5"
-          cdkAutosizeMaxRows="8"></textarea>
+          <textarea matInput placeholder="Address" [(ngModel)]="data.address" cdkTextareaAutosize cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="8"></textarea>
           <mat-icon matSuffix>home</mat-icon>
         </mat-form-field>
       </p>
@@ -33,16 +32,36 @@
           <mat-hint>Current Department:<strong>{{data.dept_name}}</strong></mat-hint>
         </mat-form-field>
       </p>
+
       <p style="margin-top: 1rem;">
         <mat-form-field appearance="outline">
           <mat-label>Years of Experience </mat-label>
-          <input matInput placeholder="exp" [(ngModel)]="data.exp" type="number">
+          <input matInput placeholder="Experience" [(ngModel)]="data.exp" type="number">
           <mat-icon matSuffix>work</mat-icon>
         </mat-form-field>
       </p>
+      <p>
+        <mat-form-field class="example-chip-list" appearance="outline">
+          <mat-label>Time Slots </mat-label>
+          <mat-chip-list #chipList class="example-chip" aria-label="Time" cdkDropList
+            cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+            <mat-chip class="example-box" cdkDrag *ngFor="let slot of slots" [selectable]="selectable"
+              [removable]="removable" (removed)="remove(slot)">
+              {{slot?.slot}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Time Slots" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-hint>Arrange in the Order that you want to show the users.Format:<strong>' 12:00 PM '</strong> </mat-hint>
+        </mat-form-field>
+      </p>
+
     </div>
 
   </div>
-<footer style="text-align: center;"><button mat-button  class="save-btn" (click)="saveChanges()">Save Changes</button></footer>
+  <footer style="text-align: center;margin-top: 1rem;" class="fixed_bar"><button mat-button class="save-btn" (click)="saveChanges()">Save Changes</button>
+  </footer>
 
 </div>

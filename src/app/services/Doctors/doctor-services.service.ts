@@ -46,10 +46,35 @@ export class DoctorServicesService {
       );
   }
   changeAvailability(data) {
-    
+
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
       .post<any>(this.url + "update_availability", data, { headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  addSlot(data) {
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "add-slot", data, { headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  deleteSlot(data) {
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "delete-slot", data, { headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+
+  arrangeSlots(data) {
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "arrange-slot", data, { headers }).pipe(map(res => {
         return res
       })
       );

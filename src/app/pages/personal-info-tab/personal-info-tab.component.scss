@@ -13,3 +13,24 @@
     background-color: dodgerblue;
     color: white;
 }
+.content{
+    // margin-bottom: 2rem;
+    height: 79vh;
+}
+.example-chip-list {
+    width: 100%;
+  }
+  .example-box.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-chip .cdk-drop-list-dragging {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+//   .fixed_bar{
+//       position: fixed;
+//       bottom: 0px;
+//       width: 100%;
+//       padding: 12px;
+//       background-color: white;
+//   }
