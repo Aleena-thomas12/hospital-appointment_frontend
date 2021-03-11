@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorServicesService } from 'src/app/services/Doctors/doctor-services.service';
+import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 const GET = 102;
 const UPDATE = 201;
 @Component({
@@ -13,7 +15,7 @@ export class DoctorProfilePageComponent implements OnInit {
 data:any={name:"Tyrell McDonald",dept:"Nephrology"}
 id:number
   constructor(private route: ActivatedRoute,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,public dialog: MatDialog,
     private doct_service:DoctorServicesService) { 
     this.route.queryParams.subscribe(params => { this.id = params.doct_view; })
     this.getDoctorDetails()
@@ -34,6 +36,11 @@ id:number
       data => this.handleResponseData(data,GET),
       error => this.handleError(error)
     );
+  }
+  deleteDoctor(id){
+    const dialogRef = this.dialog.open(DeleteConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result:`,result);  });
   }
 
   presentToast(msg) {

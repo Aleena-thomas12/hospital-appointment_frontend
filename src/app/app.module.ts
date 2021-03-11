@@ -45,6 +45,8 @@ import { MessaageToastersComponent } from './Toasters/messaage-toasters/messaage
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewDoctorsAppointmentsComponent } from './pages/view-doctors-appointments/view-doctors-appointments.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
+import { DeleteConfirmDialogComponent } from './pages/delete-confirm-dialog/delete-confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +62,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     PersonalInfoTabComponent,
     MessaageToastersComponent,
     ViewDoctorsAppointmentsComponent,
+    AddDoctorComponent,
+    DeleteConfirmDialogComponent,
     
   ],
   imports: [

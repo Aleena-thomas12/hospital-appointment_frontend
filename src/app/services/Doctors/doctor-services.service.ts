@@ -79,4 +79,20 @@ export class DoctorServicesService {
       })
       );
   }
+  addDoctors(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "add-doctor", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  getDepartments() {
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .get<any>(this.url + "get-departments", { headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }

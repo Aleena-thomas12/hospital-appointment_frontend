@@ -56,7 +56,9 @@ export class ViewDoctorsComponent implements OnInit {
       error => this.handleError(error)
     );
   }
-
+  addDoctors(){
+    this.router.navigate(['/sidemenu/add-doctor'])
+  }
   handleResponseData(recieved_data, toggle) {
     if (toggle == GET) {
       this.doctors = recieved_data.data;

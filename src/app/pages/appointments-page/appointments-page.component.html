@@ -1,45 +1,53 @@
-<section class="full-width search_bar" >
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Search Appointments" class=" search_bar--input" style="margin-left: 12px;" autocomplete="off">
-      <span matSuffix class="pointer filter">
-        <mat-icon >settings_input_component</mat-icon>
-      </span> 
-    </mat-form-field>
+<section class="full-width search_bar">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput placeholder="Search Appointments" class=" search_bar--input" style="margin-left: 12px;"
+      autocomplete="off">
+    <span matSuffix class="pointer filter">
+      <mat-icon>settings_input_component</mat-icon>
+    </span>
+  </mat-form-field>
 </section>
 <div>
-    <p class="heading_1 text-center">
-        Appointments History
-    </p>
+  <p class="heading_1 text-center">
+    Appointments History
+  </p>
 
   <div class="row" *ngFor="let appointment of appointments">
     <div class="flex std-margin--top">
-         <div class="block-line full-width"></div>
-         <div class="text-center full-width font-large">{{appointment[0]?.date|date}}</div>
-         <div class="block-line full-width"></div>
+      <div class="block-line full-width"></div>
+      <div class="text-center full-width font-large">{{appointment[0]?.date|date}}</div>
+      <div class="block-line full-width"></div>
     </div>
-   
+
     <div class="col-lg-4 col-md-4 col-sm-12 std-margin--top" *ngFor="let eachApp of appointment">
-      <div class="custom-card">
-        <span style="float: right;"><mat-icon class="pointer" [matMenuTriggerFor]="menu">more_vert</mat-icon></span>
+      <div class="custom-card" [ngStyle]="{'background-color': eachApp.canceled ? 'crimson' :''}">
+        <span style="float: right;">
+          <mat-icon class="pointer" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+        </span>
         <b>Patient Name:</b>&nbsp;{{eachApp?.pat_name}}<br>
         <b>Doctor Name: </b>&nbsp;{{'Dr.' + eachApp?.doct_name}}<br>
         <b>Department : </b>&nbsp;{{deptname_finder(eachApp.dept_id)}}<br>
         <b>Appointment Time: </b>&nbsp;{{eachApp?.time}}
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="!eachApp.canceled">
+            <mat-icon>close</mat-icon>
+            <span>Cancel</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>date_range</mat-icon>
+            <span>Reschedule</span>
+          </button>
+        </mat-menu>
       </div>
     </div>
 
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item><mat-icon>close</mat-icon>
-            <span>Cancel</span></button>
-            
-        <button mat-menu-item><mat-icon>date_range</mat-icon>
-            <span>Reschedule</span></button>
-    </mat-menu>
+
   </div>
 
 </div>
 
-    <!-- <button mat-mini-fab color="warn" aria-label="Filter" class="sticky-btn">
+<!-- <button mat-mini-fab color="warn" aria-label="Filter" class="sticky-btn">
         <mat-icon>filter_alt</mat-icon>
       </button> -->
