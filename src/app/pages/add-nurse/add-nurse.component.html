@@ -1,0 +1,48 @@
+<div class="input_outer">
+    <div class="input_inner">
+      <p style="text-align: center;margin-top: 12px;font-size: larger;">
+        <b>Add New Nurse</b>
+      </p>
+      <form [formGroup]="nurseForm">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name </mat-label>
+            <input matInput formControlName="name" placeholder="Name" >
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile </mat-label>
+            <input matInput placeholder="Mobile Phone"  formControlName="mobile" >
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>&nbsp;Select a Department</mat-label>
+            <mat-select formControlName="dept">
+              <mat-option *ngFor="let dept of departments;" [value]="dept.id">{{dept.name}}</mat-option>
+            </mat-select>
+            <mat-icon matPrefix>business</mat-icon>
+          </mat-form-field>
+        </p>
+  
+        <p style="margin-top: 1rem;">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Experience"  type="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+        <footer style="text-align: center;margin-top: 1rem;" class="fixed_bar"><button mat-button class="save-btn"
+         (click)="addNurse(nurseForm.value)" [disabled]="nurseForm.invalid" >Add Nurse</button>
+       </footer>
+      </form>
+  
+  
+    </div>
+  
+  </div>
+  
+  

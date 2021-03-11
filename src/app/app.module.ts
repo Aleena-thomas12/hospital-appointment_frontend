@@ -47,6 +47,8 @@ import { ViewDoctorsAppointmentsComponent } from './pages/view-doctors-appointme
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 import { DeleteConfirmDialogComponent } from './pages/delete-confirm-dialog/delete-confirm-dialog.component';
+import { AddNurseComponent } from './pages/add-nurse/add-nurse.component';
+import { EditNurseComponent } from './pages/edit-nurse/edit-nurse.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,8 @@ import { DeleteConfirmDialogComponent } from './pages/delete-confirm-dialog/dele
     ViewDoctorsAppointmentsComponent,
     AddDoctorComponent,
     DeleteConfirmDialogComponent,
+    AddNurseComponent,
+    EditNurseComponent,
     
   ],
   imports: [

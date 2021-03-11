@@ -7,10 +7,10 @@
     </p>
     <footer style="display: flex;margin-top: 2rem;">
         <div style="width: 100%;text-align: center;padding: 4px;">
-        <button mat-button color="warn" style="display:inline-block;"> <mat-icon>clear</mat-icon>&nbsp;No</button>
+        <button mat-button color="warn" style="display:inline-block;" (click)="close(0)"> <mat-icon>clear</mat-icon>&nbsp;No</button>
         </div>
         <div style="width: 100%;text-align: center;padding: 4px;">
-        <button mat-raised-button style="display:inline-block;" color="warn"> <mat-icon>delete</mat-icon>&nbsp;Yes </button>
-        </div>
+        <button mat-raised-button style="display:inline-block;" color="warn" (click)="close(1)"> <mat-icon>delete</mat-icon>&nbsp;Yes </button>
+        </div> 
     </footer>
 </div>

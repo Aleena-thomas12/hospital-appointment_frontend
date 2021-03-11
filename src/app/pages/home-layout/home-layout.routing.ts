@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { AddDoctorComponent } from "../add-doctor/add-doctor.component";
+import { AddNurseComponent } from "../add-nurse/add-nurse.component";
 import { AdminInfoComponent } from "../admin-info/admin-info.component";
 import { AppointmentsPageComponent } from "../appointments-page/appointments-page.component";
 import { DoctorProfilePageComponent } from "../doctor-profile-page/doctor-profile-page.component";
@@ -41,7 +42,12 @@ export const HomeLayout: Routes = [
     {
       path:"add-doctor",
       component:AddDoctorComponent
+    },
+    {
+      path:"add-nurse",
+      component:AddNurseComponent
     }
+    
     
     
     

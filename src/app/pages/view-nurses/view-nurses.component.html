@@ -2,15 +2,18 @@
     <header>
       <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="Search Nurses...">
     </header>
-    <section class="content_top">
+    <section  *ngIf="!nurses.length" style="text-align: center;font-weight: bold;margin-top: 12px;">
+Nurses Data is not available right now. Try again Later.
+    </section>
+    <section class="content_top" *ngIf="nurses.length">
       <mat-accordion>
-        <mat-expansion-panel *ngFor="let nurse of nurses">
+        <mat-expansion-panel *ngFor="let nurse of nurses;let i=index">
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{nurse?.name}}
             </mat-panel-title>
             <mat-panel-description>
-              {{nurse?.dept}}
+              {{nurse?.dept_name}}
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div>
@@ -22,7 +25,10 @@
                 </section>
               <section class="profile_section--description">
                 <b>Name:&nbsp;</b>{{ nurse?.name}}<br>
-                <b>Department:</b> {{nurse?.dept}}<br>
+                <b>Department:</b> {{nurse?.dept_name + ' Department'}}<br>
+                <mat-slide-toggle  [(ngModel)]="nurse.active" (change)="changeAvailability(i)">
+                  {{nurse.active?'Available':'Not Available'}}
+                </mat-slide-toggle>
               </section>
   
             </div>
@@ -33,3 +39,4 @@
     </section>
   </div>
   
+<button class="sticky_btn" (click)="addNurses()" mat-fab color="warn" ><mat-icon>add</mat-icon></button>
