@@ -1,0 +1,61 @@
+<div class="input_outer">
+    <div class="input_inner">
+      <p style="text-align: center;margin-top: 12px;font-size: larger;">
+        <b>Edit Patient Info</b>
+      </p>
+      <form [formGroup]="patForm">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name </mat-label>
+            <input matInput formControlName="name" placeholder="Name" >
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Age </mat-label>
+              <input matInput formControlName="age" placeholder="Age" type="number" >
+              <mat-icon matSuffix>manage_accounts</mat-icon>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Blood Group </mat-label>
+              <input matInput formControlName="blood" placeholder="Blood Group" type="text" >
+              <mat-icon matSuffix>local_hospital</mat-icon>
+            </mat-form-field>
+          </p>
+        <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Address </mat-label>
+              <textarea matInput placeholder="Address" formControlName="address" cdkTextareaAutosize cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="8"></textarea>
+              <mat-icon matSuffix>home</mat-icon>
+            </mat-form-field>
+          </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile </mat-label>
+            <input matInput placeholder="Mobile Phone"  formControlName="phone" >
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+        </p>
+  
+        <p style="margin-top: 1rem;">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Experience"  type="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+        <footer style="text-align: center;margin-top: 1rem;" class="fixed_bar"><button mat-button class="save-btn"
+         (click)="saveChanges(patForm.value)" [disabled]="patForm.invalid" >Save Changes</button>
+       </footer>
+      </form>
+  
+  
+    </div>
+  
+  </div>
+  
+  

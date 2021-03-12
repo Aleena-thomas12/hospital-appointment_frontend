@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NursesService } from 'src/app/services/Nurses/nurses.service';
+import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 const GET = 112;
 const UPDATE = 221;
+const DELETE = 320;
 @Component({
   selector: 'app-view-nurses',
   templateUrl: './view-nurses.component.html',
@@ -16,7 +19,7 @@ export class ViewNursesComponent implements OnInit {
   searchTerm: any = "";
   dataSource: any
   constructor(private ns: NursesService,
-    private router: Router, 
+    private router: Router, public dialog: MatDialog,
     private snackBar: MatSnackBar) {
     this.getNurses()
   }
@@ -43,6 +46,18 @@ export class ViewNursesComponent implements OnInit {
       error => this.handleError(error)
     );
   }
+  deleteNurse(nurse){
+    const dialogRef = this.dialog.open(DeleteConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.ns.deletNurseInfo(nurse.id).subscribe(
+          data => {
+            data.pos=this.nurses.indexOf(nurse)
+            this.handleResponseData(data, DELETE)},
+          error => this.handleError(error)
+        );
+      } });
+  }
   addNurses() {
 
     this.router.navigate(['/sidemenu/add-nurse'])
@@ -62,6 +77,10 @@ export class ViewNursesComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.nurses);
     }
     else if(toggle==UPDATE){
+      this.presentToast(recieved_data.message)
+    }
+    else if(toggle==DELETE){
+      this.nurses.splice(recieved_data.pos, 1);
       this.presentToast(recieved_data.message)
     }
   }

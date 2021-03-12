@@ -7,65 +7,48 @@ import { UtilsService } from '../utils/utils.service';
 @Injectable({
   providedIn: 'root'
 })
-export class NursesService {
+export class PatientsService {
   url: any
   constructor(private httpClient: HttpClient, private utils: UtilsService, private appSettings: AppSettingsService) {
     this.url = utils.getApiPath()
   }
-  getAllNurses() {
+  getAllPatients() {
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
-      .get<any>(this.url + "get_all_nurses", { headers }).pipe(map(res => {
+      .get<any>(this.url + "get_all_pat", { headers }).pipe(map(res => {
         return res
       })
       );
   }
-  getDoctorData(data) {
+  getPatientBookings(id) {
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
-      .get<any>(this.url + "get_doctor_info?doct_id=" + data, { headers }).pipe(map(res => {
+      .get<any>(this.url + "get_pat_app?pat_id="+id, { headers }).pipe(map(res => {
         return res
       })
       );
   }
-  changeAvailability(data) {
-
+  getPatInfo(data){
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
-      .post<any>(this.url + "nurse_update_availability", data, { headers }).pipe(map(res => {
+      .get<any>(this.url + "get-pat-info?pat_id="+data,{ headers }).pipe(map(res => {
         return res
       })
       );
   }
-  addNurse(data){
+  editPatInfo(data){
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
-      .post<any>(this.url + "add-nurse", data,{ headers }).pipe(map(res => {
+      .post<any>(this.url + "edit-pat-info", data,{ headers }).pipe(map(res => {
         return res
       })
       );
   }
-  getNurseInfo(data){
-    const headers = this.appSettings.getHttpClientHeaders();
-    return this.httpClient
-      .get<any>(this.url + "get-nurse-info?nurse_id="+data,{ headers }).pipe(map(res => {
-        return res
-      })
-      );
-  }
-  editNurseInfo(data){
-    const headers = this.appSettings.getHttpClientHeaders();
-    return this.httpClient
-      .post<any>(this.url + "edit-nurse-info", data,{ headers }).pipe(map(res => {
-        return res
-      })
-      );
-  }
-  deletNurseInfo(temp){
+  deletPatInfo(temp){
     let data:any={id:temp}
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
-      .post<any>(this.url + "delete-nurse", data,{ headers }).pipe(map(res => {
+      .post<any>(this.url + "delete-pat", data,{ headers }).pipe(map(res => {
         return res
       })
       );

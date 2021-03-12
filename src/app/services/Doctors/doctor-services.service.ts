@@ -95,4 +95,22 @@ export class DoctorServicesService {
       })
       );
   }
+  deletDoctorInfo(temp){
+    let data:any={id:temp}
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "delete-doctor", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  deleteDepartments(temp){
+    let data:any={id:temp}
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "delete-dept", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }

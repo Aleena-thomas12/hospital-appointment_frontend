@@ -40,7 +40,7 @@ Nurses Data is not available right now. Try again Later.
                <button mat-raised-button (click)="editNurse(nurse.id)">Edit Details</button>
             </div>
             <div class="full-width" style="background: center;">
-              <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Delete</button>
+              <button mat-raised-button color="warn" (click)="deleteNurse(nurse)"><mat-icon>delete</mat-icon>Delete</button>
            </div>
           </footer>
         </mat-expansion-panel>

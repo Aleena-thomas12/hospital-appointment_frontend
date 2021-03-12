@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorServicesService } from 'src/app/services/Doctors/doctor-services.service';
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 const GET = 102;
 const UPDATE = 201;
+const DELETE=345;
 @Component({
   selector: 'app-doctor-profile-page',
   templateUrl: './doctor-profile-page.component.html',
@@ -14,7 +15,7 @@ const UPDATE = 201;
 export class DoctorProfilePageComponent implements OnInit {
 data:any={name:"Tyrell McDonald",dept:"Nephrology"}
 id:number
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,private router: Router,
     private snackBar: MatSnackBar,public dialog: MatDialog,
     private doct_service:DoctorServicesService) { 
     this.route.queryParams.subscribe(params => { this.id = params.doct_view; })
@@ -37,10 +38,16 @@ id:number
       error => this.handleError(error)
     );
   }
-  deleteDoctor(id){
+  deleteDoctor(){
     const dialogRef = this.dialog.open(DeleteConfirmDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result:`,result);  });
+      if(result){
+        this.doct_service.deletDoctorInfo(this.data.id).subscribe(
+          data => {
+            this.handleResponseData(data, DELETE)},
+          error => this.handleError(error)
+        );
+      } });
   }
 
   presentToast(msg) {
@@ -54,9 +61,15 @@ id:number
     {
     this.data=recieved_data.data;
     }
-   else{
+   else if(toggle==UPDATE){
      this.presentToast(recieved_data.message)
    }
+   else if(toggle==DELETE){
+    this.presentToast(recieved_data.message)
+    setTimeout(()=>{                           //<<<---using ()=> syntax
+     this.router.navigate(['/sidemenu/view-doctors'])
+ }, 1000);
+  }
   }
   handleError(error) {
     console.log(error)

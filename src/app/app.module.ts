@@ -49,6 +49,11 @@ import { AddDoctorComponent } from './pages/add-doctor/add-doctor.component';
 import { DeleteConfirmDialogComponent } from './pages/delete-confirm-dialog/delete-confirm-dialog.component';
 import { AddNurseComponent } from './pages/add-nurse/add-nurse.component';
 import { EditNurseComponent } from './pages/edit-nurse/edit-nurse.component';
+import { ViewDepartmentsComponent } from './pages/view-departments/view-departments.component';
+import { ViewPatientsComponent } from './pages/view-patients/view-patients.component';
+import { EditPatientsComponent } from './pages/edit-patients/edit-patients.component';
+import { PatientBookingsComponent } from './pages/patient-bookings/patient-bookings.component';
+import { AddDeptDialogComponent } from './pages/add-dept-dialog/add-dept-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +73,11 @@ import { EditNurseComponent } from './pages/edit-nurse/edit-nurse.component';
     DeleteConfirmDialogComponent,
     AddNurseComponent,
     EditNurseComponent,
+    ViewDepartmentsComponent,
+    ViewPatientsComponent,
+    EditPatientsComponent,
+    PatientBookingsComponent,
+    AddDeptDialogComponent,
     
   ],
   imports: [

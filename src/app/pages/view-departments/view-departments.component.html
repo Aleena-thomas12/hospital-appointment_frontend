@@ -1,0 +1,20 @@
+<div class="main">
+<header class="full-width" style="text-align: center;font-weight: bold;font-size: x-large;margin-bottom: 1rem;">
+Departments
+</header>
+
+<table id="customers">
+    <tr>
+      <th>Sl.No</th>
+      <th>Department Name</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let dept of departments;let i=index">
+      <td>{{i+1}}</td>
+      <td>{{dept?.name}}</td>
+      <td style="text-align: center;"><mat-icon style="cursor: pointer;" (click)="deleteDept(dept)">delete</mat-icon></td>
+    </tr>
+
+  </table>
+</div>
+<button class="sticky_btn" mat-mini-fab color="warn" (click)="addDept()"><mat-icon>add</mat-icon></button>

@@ -21,4 +21,12 @@ export class AppointmentsService {
     })
     );
    }
+   getPatientAppointments(id){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .get<any>(this.url + "get_patient_appointments?pat_id="+id, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
 }

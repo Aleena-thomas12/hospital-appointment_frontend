@@ -17,6 +17,8 @@ export class HomeLayoutComponent implements OnInit {
     { id: 3, name: "Admin Info",icon:'admin_panel_settings', url: "/sidemenu/admin-info" },
     { id: 4, name: "Doctors",icon:'local_hospital', url: "/sidemenu/view-doctors" },
     { id: 5, name: "Nurses",icon:'local_pharmacy', url: "/sidemenu/view-nurses" },
+    { id: 5, name: "Patients",icon:'account_circle', url: "/sidemenu/view-patients" },
+    { id: 5, name: "Departments",icon:'business', url: "/sidemenu/view-departments" },
     { id: 6, name: "Logout",icon:'logout',url: "/sidemenu/logout" },
   ];
   sidenavWidth = 15;

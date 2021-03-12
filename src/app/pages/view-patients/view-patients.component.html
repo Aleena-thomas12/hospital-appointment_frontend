@@ -1,0 +1,62 @@
+<div class="content">
+  <header>
+    <input class="form-control" type="text" (keyup)="applyFilter($event)" placeholder="Search Patients...">
+  </header>
+  <section *ngIf="!patients.length" style="text-align: center;font-weight: bold;margin-top: 12px;">
+    Patients Data is not available right now. Try again Later.
+  </section>
+  <section class="content_top" *ngIf="patients.length">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let pat of patients;let i=index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{pat?.name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Age: {{pat?.age}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <div class="profile_section">
+
+            <section class="profile_section--description">
+              <b>Name:&nbsp;</b>{{ pat?.name}}<br>
+              <b>Age:</b> {{pat?.age }}<br>
+              <b>Address:</b> {{pat?.address }}<br>
+              <b>Blood Group:</b><span style="color: red;">{{pat?.blood }}</span> <br>
+              <b>Mobile:</b><span>{{pat?.phone }}</span> <br>
+              <b>Email:</b><span>{{pat?.email }}</span> <br>
+            </section>
+
+
+          </div>
+        </div>
+        <footer >
+          <div class="full-width" style="text-align: right;">
+            <button mat-button style="background-color: dodgerblue;color: white;" [matMenuTriggerFor]="pat_menu">Settings</button>
+            <mat-menu #pat_menu="matMenu">
+              <button mat-menu-item (click)="editPatient(pat.id)">
+                <mat-icon>create</mat-icon>
+                <span>Edit Details</span>
+              </button>
+              <button mat-menu-item (click)="patBookings(pat.id,pat.name)">
+                <mat-icon>history</mat-icon>
+                <span>Bookings History</span>
+              </button>
+              <button mat-menu-item (click)="deletePat(pat)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete Patient</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="full-width" style="background: center;">
+            <!-- <button mat-raised-button color="warn" (click)="deleteNurse(nurse)"><mat-icon>delete</mat-icon>Delete</button> -->
+          </div>
+        </footer>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </section>
+</div>
+
+<!-- <button class="sticky_btn" (click)="addNurses()" mat-fab color="warn" ><mat-icon>add</mat-icon></button> -->
