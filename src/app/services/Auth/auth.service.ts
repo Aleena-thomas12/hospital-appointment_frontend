@@ -29,4 +29,12 @@ url:any
     })
     );
 }
+chnagePass(data){
+  const headers = this.appSettings.getHttpClientHeaders();
+  return this.httpClient
+  .post<any>(this.url + "change-pass", data, { headers }).pipe(map(res => {
+    return res
+  })
+  );
+}
 }
