@@ -13,14 +13,14 @@
     Appointments History
   </p>
 
-  <div class="row" *ngFor="let appointment of appointments">
+  <div class="row" *ngFor="let appointment of appointments;let i=index">
     <div class="flex std-margin--top">
       <div class="block-line full-width"></div>
       <div class="text-center full-width font-large">{{appointment[0]?.date|date}}</div>
       <div class="block-line full-width"></div>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-12 std-margin--top" *ngFor="let eachApp of appointment">
+    <div class="col-lg-4 col-md-4 col-sm-12 std-margin--top" *ngFor="let eachApp of appointment;let j=index">
       <div class="custom-card" [ngStyle]="{'background-color': eachApp.canceled ? 'crimson' :''}">
         <span style="float: right;">
           <mat-icon class="pointer" [matMenuTriggerFor]="menu">more_vert</mat-icon>
@@ -30,7 +30,7 @@
         <b>Department : </b>&nbsp;{{deptname_finder(eachApp.dept_id)}}<br>
         <b>Appointment Time: </b>&nbsp;{{eachApp?.time}}
         <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngIf="!eachApp.canceled">
+          <button mat-menu-item *ngIf="!eachApp.canceled" (click)="cancelAppointment(eachApp,i,j)">
             <mat-icon>close</mat-icon>
             <span>Cancel</span>
           </button>

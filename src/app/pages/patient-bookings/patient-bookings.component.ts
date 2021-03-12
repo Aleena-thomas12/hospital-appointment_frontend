@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
+import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
 const GET = 12;
+const CANCEL = 22;
 @Component({
   selector: 'app-patient-bookings',
   templateUrl: './patient-bookings.component.html',
@@ -13,7 +16,7 @@ export class PatientBookingsComponent implements OnInit {
   name:any
   departments: any
   appointments: any = []
-  constructor(private app: AppointmentsService, private route: ActivatedRoute) {
+  constructor(private app: AppointmentsService, private route: ActivatedRoute,public dialog: MatDialog) {
     this.route.queryParams.subscribe(params => { this.id = params.patient_view; this.name=params.pat_name})
     this.getPatAppointments()
   }
@@ -21,7 +24,23 @@ export class PatientBookingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cancelAppointment(t,i,j) {
+    const dialogRef = this.dialog.open(CancelConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.app.cancelAppointment(t).subscribe(
+          data => {
+            data.pos1=i;
+            data.pos2=j;
+            this.handleResponseData(data,CANCEL)
+          
+          },
+          error => this.handleError(error)
+        );
 
+      }
+     })
+  }
   getPatAppointments() {
     this.app.getPatientAppointments(this.id).subscribe(
       data => this.handleResponseData(data,GET),
@@ -42,7 +61,9 @@ export class PatientBookingsComponent implements OnInit {
       console.log(data, "Recieved Data")
       this.appointments = data.appointments;
     }
-
+    else if(toggle==CANCEL){
+      this.appointments[data.pos1][data.pos2].canceled= 1;
+      }
   }
   handleError(error) {
     console.log(error)

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
-
+import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
+const GET=111;
+const CANCEL=221;
 @Component({
   selector: 'app-appointments-page',
   templateUrl: './appointments-page.component.html',
@@ -10,17 +13,33 @@ export class AppointmentsPageComponent implements OnInit {
 
   departments: any
   appointments: any = []
-  constructor(private app: AppointmentsService) {
+  constructor(private app: AppointmentsService, public dialog: MatDialog) {
     this.getAllAppointments()
   }
 
   ngOnInit(): void {
   }
 
+  cancelAppointment(t,i,j) {
+    const dialogRef = this.dialog.open(CancelConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.app.cancelAppointment(t).subscribe(
+          data => {
+            data.pos1=i;
+            data.pos2=j;
+            this.handleResponseData(data,CANCEL)
+          
+          },
+          error => this.handleError(error)
+        );
 
+      }
+     })
+  }
   getAllAppointments() {
     this.app.getallAppointments().subscribe(
-      data => this.handleResponseData(data),
+      data => this.handleResponseData(data,GET),
       error => this.handleError(error)
     );
   }
@@ -31,11 +50,17 @@ export class AppointmentsPageComponent implements OnInit {
     })
     return temp;
   }
- 
-  handleResponseData(data) {
-    this.departments = data.departments;
+
+  handleResponseData(data,toggle) {
+    if(toggle==GET){
+      this.departments = data.departments;
     console.log(data, "Recieved Data")
     this.appointments = data.appointments;
+    }
+    else if(toggle==CANCEL){
+    this.appointments[data.pos1][data.pos2].canceled= 1;
+    }
+    
   }
   handleError(error) {
     console.log(error)

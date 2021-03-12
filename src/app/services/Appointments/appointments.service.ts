@@ -29,4 +29,12 @@ export class AppointmentsService {
     })
     );
    }
+   cancelAppointment(temp){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .post<any>(this.url + "cancel-appointment",temp, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
 }

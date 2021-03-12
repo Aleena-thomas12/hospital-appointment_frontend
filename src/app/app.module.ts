@@ -55,6 +55,7 @@ import { EditPatientsComponent } from './pages/edit-patients/edit-patients.compo
 import { PatientBookingsComponent } from './pages/patient-bookings/patient-bookings.component';
 import { AddDeptDialogComponent } from './pages/add-dept-dialog/add-dept-dialog.component';
 import { PasswordChangeBottomComponent } from './pages/password-change-bottom/password-change-bottom.component';
+import { CancelConfirmDialogComponent } from './pages/cancel-confirm-dialog/cancel-confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { PasswordChangeBottomComponent } from './pages/password-change-bottom/pa
     PatientBookingsComponent,
     AddDeptDialogComponent,
     PasswordChangeBottomComponent,
+    CancelConfirmDialogComponent,
     
   ],
   imports: [
