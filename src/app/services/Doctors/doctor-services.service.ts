@@ -113,4 +113,13 @@ export class DoctorServicesService {
       })
       );
   }
+  addDept(temp){
+    let data:any={name:temp}
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "add-dept", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }

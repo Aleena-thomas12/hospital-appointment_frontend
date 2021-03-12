@@ -7,6 +7,7 @@ import { AddDeptDialogComponent } from '../add-dept-dialog/add-dept-dialog.compo
 import { DeleteConfirmDialogComponent } from '../delete-confirm-dialog/delete-confirm-dialog.component';
 const GET = 11;
 const DELETE = 22;
+const ADD = 23;
 @Component({
   selector: 'app-view-departments',
   templateUrl: './view-departments.component.html',
@@ -31,8 +32,17 @@ export class ViewDepartmentsComponent implements OnInit {
 
   }
   addDept(){
-    const dialogRef = this.dialog.open(AddDeptDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {})
+    const dialogRef = this.dialog.open(AddDeptDialogComponent,{hasBackdrop:false});
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.action){
+        this.doct_service.addDept(result.res).subscribe(
+          data => {
+            this.handleResponseData(data, ADD)},
+          error => this.handleError(error)
+        );
+      }
+    
+    })
   }
   deleteDept(temp) {
 
@@ -63,6 +73,10 @@ export class ViewDepartmentsComponent implements OnInit {
     else if (toggle == DELETE) {
 
       this.departments.splice(recieved_data.index, 1);
+      this.presentToast(recieved_data.message)
+    }
+    else if (toggle == ADD) {
+      this.departments.push(recieved_data.data)
       this.presentToast(recieved_data.message)
     }
 

@@ -1,1 +1,16 @@
-<p>add-dept-dialog works!</p>
+<h2 mat-dialog-title>Add New Department</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="deptForm">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Department Name </mat-label>
+            <input matInput formControlName="name" placeholder="Department Name" >
+            <mat-icon matSuffix>business</mat-icon>
+          </mat-form-field>
+        </p>
+        </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn" (click)="onAction(0)">Cancel</button>
+  <button class="btn" mat-button [mat-dialog-close]="true" (click)="onAction(1,deptForm.value)" [disabled]="deptForm.invalid" cdkFocusInitial>Add Department</button>
+</mat-dialog-actions>
