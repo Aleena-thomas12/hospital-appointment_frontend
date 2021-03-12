@@ -82,6 +82,7 @@ export class ViewDepartmentsComponent implements OnInit {
 
   }
   handleError(error) {
-    console.log(error)
+    let re=error.error
+    this.presentToast(re.message)
   }
 }

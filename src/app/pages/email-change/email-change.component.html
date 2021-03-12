@@ -1,1 +1,32 @@
-<p>email-change works!</p>
+<header style="text-align: center;font-size: x-large;font-weight: bold;margin-bottom: 1.5rem;margin-top: 1rem;">
+    Change your Email
+</header>
+<section style="text-align: center;">
+     <form [formGroup]="emailForm">
+        <p >
+          <mat-form-field appearance="outline">
+            <mat-label>Your Current Email </mat-label>
+            <input matInput formControlName="email" placeholder="Your Current Email" type="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+        <p style="margin-top: 12px;">
+            <mat-form-field appearance="outline">
+              <mat-label>New Email </mat-label>
+              <input matInput formControlName="new_email" placeholder="Your Current Email" type="email" >
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+          </p>
+          <p style="margin-top: 12px;">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" placeholder="Password"  type="password">
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+          </p>
+          <p >
+            <button mat-button style="background-color: dodgerblue;color: white;" (click)="saveChanges(emailForm.value)" [disabled]="emailForm.invalid">Update Email</button>
+          </p>
+        </form>
+</section>
+   
