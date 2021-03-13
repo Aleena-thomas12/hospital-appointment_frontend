@@ -56,6 +56,10 @@ import { PatientBookingsComponent } from './pages/patient-bookings/patient-booki
 import { AddDeptDialogComponent } from './pages/add-dept-dialog/add-dept-dialog.component';
 import { PasswordChangeBottomComponent } from './pages/password-change-bottom/password-change-bottom.component';
 import { CancelConfirmDialogComponent } from './pages/cancel-confirm-dialog/cancel-confirm-dialog.component';
+import { ReschedulePageComponent } from './pages/reschedule-page/reschedule-page.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +86,7 @@ import { CancelConfirmDialogComponent } from './pages/cancel-confirm-dialog/canc
     AddDeptDialogComponent,
     PasswordChangeBottomComponent,
     CancelConfirmDialogComponent,
+    ReschedulePageComponent,
     
   ],
   imports: [
@@ -91,6 +96,8 @@ import { CancelConfirmDialogComponent } from './pages/cancel-confirm-dialog/canc
     MatSnackBarModule,
     MatMenuModule,
     MatBottomSheetModule,
+    MatDatepickerModule, 
+    MatNativeDateModule, 
     MatExpansionModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -106,6 +113,7 @@ import { CancelConfirmDialogComponent } from './pages/cancel-confirm-dialog/canc
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatStepperModule,
     MatToolbarModule,
     MatIconModule,
     MatTableModule,

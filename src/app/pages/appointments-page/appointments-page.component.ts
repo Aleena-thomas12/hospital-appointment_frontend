@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
 import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
 const GET=111;
@@ -13,7 +14,7 @@ export class AppointmentsPageComponent implements OnInit {
 
   departments: any
   appointments: any = []
-  constructor(private app: AppointmentsService, public dialog: MatDialog) {
+  constructor(private router: Router,private app: AppointmentsService, public dialog: MatDialog) {
     this.getAllAppointments()
   }
 
@@ -36,6 +37,10 @@ export class AppointmentsPageComponent implements OnInit {
 
       }
      })
+  }
+
+  rescheduleAppointment(app){
+    this.router.navigate(['sidemenu/reschedule-app'], { queryParams: { app_id: app.id,app_date:app.date,app_time:app.time} })
   }
   getAllAppointments() {
     this.app.getallAppointments().subscribe(

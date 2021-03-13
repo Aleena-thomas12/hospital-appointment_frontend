@@ -37,4 +37,20 @@ export class AppointmentsService {
     })
     );
    }
+   getAppointment(id){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .get<any>(this.url + "get_appointment?app_id="+id, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
+   getTimeSlots(date,doct_id){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .get<any>(this.url + "get_timeslots?doct_id="+doct_id+"&date="+date, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
 }

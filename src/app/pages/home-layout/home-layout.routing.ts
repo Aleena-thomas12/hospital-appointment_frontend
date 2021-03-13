@@ -8,6 +8,7 @@ import { EditNurseComponent } from "../edit-nurse/edit-nurse.component";
 import { EditPatientsComponent } from "../edit-patients/edit-patients.component";
 import { HomePageComponent } from "../home-page/home-page.component";
 import { PatientBookingsComponent } from "../patient-bookings/patient-bookings.component";
+import { ReschedulePageComponent } from "../reschedule-page/reschedule-page.component";
 import { ViewDepartmentsComponent } from "../view-departments/view-departments.component";
 import { ViewDoctorsComponent } from "../view-doctors/view-doctors.component";
 import { ViewNursesComponent } from "../view-nurses/view-nurses.component";
@@ -68,6 +69,10 @@ export const HomeLayout: Routes = [
     },{
       path:"patient-bookings",
       component:PatientBookingsComponent
+    },
+    {
+      path:"reschedule-app",
+      component:ReschedulePageComponent
     }
     
     
