@@ -45,7 +45,7 @@ export class AppointmentBookingComponent implements OnInit {
 
   getTimeSlots() {
     let date = this.doctorForm.value.date;
-    this.app.getTimeSlots(date, this.doctorForm.value.doct_id).subscribe(
+    this.app.getTimeSlots(this.datepipe.transform(this.doctorForm.value.date, 'yyyy-MM-dd'), this.doctorForm.value.doct_id).subscribe(
       data => {
         this.handleResponseData(data, GET_TIME)
       },

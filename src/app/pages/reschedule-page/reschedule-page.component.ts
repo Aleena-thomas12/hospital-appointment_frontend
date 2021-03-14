@@ -48,7 +48,7 @@ export class ReschedulePageComponent implements OnInit {
   }
   getTimeSlots() {
     let date = this.dateForm.value.date;
-    this.app.getTimeSlots(date, this.app_data.doct_id).subscribe(
+    this.app.getTimeSlots(this.datepipe.transform(this.dateForm.value.date, 'yyyy-MM-dd'), this.app_data.doct_id).subscribe(
       data => {
         this.handleResponseData(data, GET_TIME)
       },
