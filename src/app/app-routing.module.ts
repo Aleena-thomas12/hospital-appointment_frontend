@@ -6,6 +6,7 @@ import { PatientLayoutComponent } from './patient-pages/patient-layout/patient-l
 import { AuthGuardService } from 'src/app/services/AuthGuard/auth-guard.service';
 import { AuthGuardSidemenuService } from 'src/app/services/AuthGuard/auth-guard-sidemenu.service';
 import { PasswordResetLinkComponent } from './patient-pages/password-reset-link/password-reset-link.component';
+import { SignUpPageComponent } from './patient-pages/sign-up-page/sign-up-page.component';
 const routes: Routes = [{
   path:'',
   redirectTo: 'login',
@@ -18,6 +19,9 @@ const routes: Routes = [{
 },{
   path:"forgot-password",
   component:PasswordResetLinkComponent
+},{
+  path:"signup",
+  component:SignUpPageComponent
 },
 {
   path:"sidemenu",

@@ -1,7 +1,7 @@
 <div class="input_outer">
     <div class="input_inner">
       <p style="text-align: center;margin-top: 12px;font-size: larger;">
-        <b>Edit Patient Info</b>
+        <b>New Patient Account Sign Up</b>
       </p>
       <form [formGroup]="patForm">
         <p>
@@ -11,6 +11,20 @@
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </p>
+        <p style="margin-top: 1rem;">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Email"  type="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+        <p style="margin-top: 1rem;">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" placeholder="Password"  type="password">
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+          </p>
         <p>
             <mat-form-field appearance="outline">
               <mat-label>Age </mat-label>
@@ -41,13 +55,6 @@
           </mat-form-field>
         </p>
   
-        <p style="margin-top: 1rem;">
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email Address"  type="email">
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field>
-        </p>
         <footer style="text-align: center;margin-top: 1rem;" class="fixed_bar"><button mat-button class="save-btn"
          (click)="saveChanges(patForm.value)" [disabled]="patForm.invalid" >Save Changes</button>
        </footer>

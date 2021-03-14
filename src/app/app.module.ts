@@ -66,6 +66,7 @@ import { PatientHomeComponent } from './patient-pages/patient-home/patient-home.
 import { JwtModule } from "@auth0/angular-jwt";
 import { ForgotPassBottomSheetComponent } from './patient-pages/forgot-pass-bottom-sheet/forgot-pass-bottom-sheet.component';
 import { PasswordResetLinkComponent } from './patient-pages/password-reset-link/password-reset-link.component';
+import { SignUpPageComponent } from './patient-pages/sign-up-page/sign-up-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +97,8 @@ import { PasswordResetLinkComponent } from './patient-pages/password-reset-link/
     PatientLayoutComponent,
     PatientHomeComponent,
     ForgotPassBottomSheetComponent,
-    PasswordResetLinkComponent
+    PasswordResetLinkComponent,
+    SignUpPageComponent
     
 
     

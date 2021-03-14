@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -13,7 +13,8 @@ export class PasswordResetLinkComponent implements OnInit {
   passwordForm: FormGroup;
   token:any;
   id:any
-  constructor(private formBuilder: FormBuilder,private route:ActivatedRoute,  private auth: AuthService,
+  constructor(private formBuilder: FormBuilder,private router:Router,
+    private route:ActivatedRoute,  private auth: AuthService,
     private snackBar: MatSnackBar) { 
 
       this.route.queryParams.subscribe(params => { this.token = params.token;this.id=params.user })
@@ -47,6 +48,7 @@ export class PasswordResetLinkComponent implements OnInit {
       if(data.status)
       {
         this.presentToast("Password updated succesfully!")
+        this.router.navigate(['login'])
       }
         
    

@@ -43,6 +43,9 @@ export class LoginPageComponent implements OnInit {
   passwordReset() {
    const bottomRef= this._bottomSheet.open(ForgotPassBottomSheetComponent);
   }
+  signUp(){
+    this.router.navigate(['signup'])
+  }
 
   handleResponseData(data, type) {
     console.log(data)
