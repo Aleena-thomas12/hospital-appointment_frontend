@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
 import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
 const GET = 12;
@@ -16,7 +16,7 @@ export class PatientBookingsComponent implements OnInit {
   name:any
   departments: any
   appointments: any = []
-  constructor(private app: AppointmentsService, private route: ActivatedRoute,public dialog: MatDialog) {
+  constructor(private router: Router,private app: AppointmentsService, private route: ActivatedRoute,public dialog: MatDialog) {
     this.route.queryParams.subscribe(params => { this.id = params.patient_view; this.name=params.pat_name})
     this.getPatAppointments()
   }
@@ -41,6 +41,10 @@ export class PatientBookingsComponent implements OnInit {
       }
      })
   }
+  rescheduleAppointment(app){
+    this.router.navigate(['sidemenu/reschedule-app'], { queryParams: { app_id: app.id} })
+  }
+
   getPatAppointments() {
     this.app.getPatientAppointments(this.id).subscribe(
       data => this.handleResponseData(data,GET),

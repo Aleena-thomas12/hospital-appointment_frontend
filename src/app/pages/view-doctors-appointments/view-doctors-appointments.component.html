@@ -39,7 +39,7 @@ No Appointments to Show.
             <button mat-menu-item *ngIf="!eachApp.canceled" (click)="cancelAppointment(eachApp,i,j)"><mat-icon>close</mat-icon>
                 <span>Cancel</span></button>
                 
-            <button mat-menu-item><mat-icon>date_range</mat-icon>
+            <button mat-menu-item (click)="rescheduleAppointment(eachApp)"><mat-icon>date_range</mat-icon>
                 <span>Reschedule</span></button>
         </mat-menu>
         </div>

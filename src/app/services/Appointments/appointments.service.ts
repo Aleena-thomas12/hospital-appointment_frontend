@@ -53,4 +53,12 @@ export class AppointmentsService {
     })
     );
    }
+   rescheduleAppointment(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .post<any>(this.url + "reschedule-app",data, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
 }

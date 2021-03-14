@@ -60,6 +60,10 @@ import { ReschedulePageComponent } from './pages/reschedule-page/reschedule-page
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { PatientLayoutComponent } from './patient-pages/patient-layout/patient-layout.component';
+import { PatientHomeComponent } from './patient-pages/patient-home/patient-home.component';
+import { JwtModule } from "@auth0/angular-jwt";
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +91,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     PasswordChangeBottomComponent,
     CancelConfirmDialogComponent,
     ReschedulePageComponent,
+    PatientLayoutComponent,
+    PatientHomeComponent
+    
+
     
   ],
   imports: [
@@ -118,6 +126,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatTableModule,
     FilterPipeModule,
+    JwtModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -125,7 +134,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AngularFireAuthModule, // auth
     AngularFireStorageModule // storage
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

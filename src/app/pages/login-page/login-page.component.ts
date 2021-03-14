@@ -12,7 +12,7 @@ const LOGIN = 12;
 
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
-  error_info:any={message:"",state:false}
+  error_info: any = { message: "", state: false }
   constructor(private formBuilder: FormBuilder,
     private auth: AuthService,
     private tokenservice: TokenService,
@@ -41,15 +41,24 @@ export class LoginPageComponent implements OnInit {
 
   handleResponseData(data, type) {
     console.log(data)
-    if(data.token)
-    {this.tokenservice.handle(data.token);
-      this.router.navigate(['sidemenu'])
+    if (data.token) {
+      this.tokenservice.handle(data.token);
+      let user_data = data.user_data;
+      let name = user_data.name.split(" ", 1)
+      if (user_data.admin_access)
+        { localStorage.setItem('url','sidemenu')
+        localStorage.setItem('name','Admin')
+          this.router.navigate(['sidemenu'])}
+      else
+        {localStorage.setItem('url','patient-sidemenu')
+        localStorage.setItem('name',name[0])
+          this.router.navigate(['patient-sidemenu'])}
     }
   }
   handleError(err) {
-    let re=err.error;
-    this.error_info.message=re.error?re.error:"We experienced some problem Try again later.";
-    this.error_info.state=!re.status;
+    let re = err.error;
+    this.error_info.message = re.error ? re.error : "We experienced some problem Try again later.";
+    this.error_info.state = !re.status;
   }
 
 }

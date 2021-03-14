@@ -24,6 +24,9 @@ export class HomeLayoutComponent implements OnInit {
   sidenavWidth = 15;
   ngOnInit(): void {
   }
+  getName(){
+    return localStorage.getItem('name')
+  }
   navigate(i){
     console.log(this.side_pages[i].url)
     this.router.navigate([this.side_pages[i].url])

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
 import { DoctorServicesService } from 'src/app/services/Doctors/doctor-services.service';
 import { CancelConfirmDialogComponent } from '../cancel-confirm-dialog/cancel-confirm-dialog.component';
@@ -16,7 +17,7 @@ export class ViewDoctorsAppointmentsComponent implements OnInit {
   departments: any
   appointments: any = []
   status: boolean = false;
-  constructor(private app: DoctorServicesService,public dialog: MatDialog,private appntment:AppointmentsService) {
+  constructor(private router: Router,private app: DoctorServicesService,public dialog: MatDialog,private appntment:AppointmentsService) {
 
   }
 
@@ -40,6 +41,9 @@ export class ViewDoctorsAppointmentsComponent implements OnInit {
 
       }
      })
+  }
+  rescheduleAppointment(app){
+    this.router.navigate(['sidemenu/reschedule-app'], { queryParams: { app_id: app.id} })
   }
   getAllAppointments() {
     this.app.getDoctorAppointments(this.empId).subscribe(
