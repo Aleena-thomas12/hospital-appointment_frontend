@@ -1,1 +1,65 @@
-<p>appointment-booking works!</p>
+<mat-horizontal-stepper linear="true" #stepper>
+    <mat-step [stepControl]="doctorForm">
+      <form style="text-align: center;" [formGroup]="doctorForm">
+        <ng-template matStepLabel>Select a Date</ng-template>
+        <header style="margin: 2rem;font-size: x-large;font-weight: bold;line-height: 2rem;">
+          Choose a Date for Appointment
+        </header>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <p>
+            <mat-form-field appearance="outline">
+              <mat-label>&nbsp;Select a Doctor</mat-label>
+              <mat-select  formControlName="doct_id">
+                <mat-option *ngFor="let doct of doctors;" [value]="doct.id">{{doct.name}}</mat-option>
+              </mat-select>
+              <mat-icon matPrefix>business</mat-icon>
+              <mat-hint><strong>Select a doctor from any departmnet </strong></mat-hint>
+            </mat-form-field>
+          </p>
+        <div style="text-align: center;margin-top: 2rem;">
+          <button mat-button [disabled]="doctorForm.invalid" class="btn" (click)="getTimeSlots()" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="Select a New Time" [stepControl]="slotsForm">
+      <div style="display: flex;margin: auto;width: 100%;">
+        <div class="row" style="width: 100%;">
+          <div class="col-lg-1 col-md-2 col-sm-3" style="padding:12px;text-align: center;" *ngFor="let slot of slots;let i=index">
+            <button mat-raised-button color="warn" (click)="slotSelection(i)"
+              [disabled]="slot.selected">{{slot?.slot}}</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center;margin-top: 2rem;">
+        <button class="btn" mat-button [disabled]="slotsForm.invalid" matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p style="text-align: center;font-size: larger;font-weight: bold;">Appointment Details</p>
+      <div style="text-align: center;"> 
+        
+        <p>
+          <span>Scheduled Date:&nbsp;</span><span style="font-weight: bold;">{{doctorForm.value?.date|date}}</span>
+        </p>
+        <p>
+          <span>Scheduled Slot:&nbsp;</span><span style="font-weight: bold;">{{selectedSlot?.slot}}</span>
+        </p>
+  
+      </div>
+      <div style="text-align: center;margin-top: 2rem;" *ngIf="!apiState">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button class="btn" [disabled]="slotsForm.invalid" (click)="rescheduleAppointment(slotsForm.value)">Reschedule Appointment</button>
+      </div>
+      <div style="text-align: center;margin-top: 2rem;" *ngIf="apiState">
+        <mat-spinner class="loading--spinner" [diameter]="50"></mat-spinner><br>
+  
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+      

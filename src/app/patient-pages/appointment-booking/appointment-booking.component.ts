@@ -1,5 +1,12 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
+import { DoctorServicesService } from 'src/app/services/Doctors/doctor-services.service';
+const GET_DOCT = 1201;
+const GET_TIME=230;
 @Component({
   selector: 'app-appointment-booking',
   templateUrl: './appointment-booking.component.html',
@@ -7,9 +14,79 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentBookingComponent implements OnInit {
 
-  constructor() { }
+  minDate: any
+  doctors: any
+  doctorForm: FormGroup;
+  slotsForm: FormGroup;
+  slots: any = []
+  selectedSlot: any
+  apiState: boolean = false;
+  constructor(private formBuilder: FormBuilder, private router: Router, public datepipe: DatePipe,
+    private snackBar: MatSnackBar, private app: AppointmentsService,private doct:DoctorServicesService) {
+    this.minDate = new Date()
+
+    this.getDoctors()
+  }
 
   ngOnInit(): void {
+
+    this.doctorForm = this.formBuilder.group({
+      date: ['', Validators.required],
+      doct_id: ['', Validators.required]
+    });
+    this.slotsForm = this.formBuilder.group({
+      date: ['', Validators.required],
+      slot_id: ['', Validators.required],
+      doct_id: ['', Validators.required]
+    });
   }
+
+  getTimeSlots() {
+    let date = this.doctorForm.value.date;
+    this.app.getTimeSlots(date, this.doctorForm.value.doct_id).subscribe(
+      data => {
+        this.handleResponseData(data, GET_TIME)
+      },
+      error => this.handleError(error)
+    );
+  }
+  getDoctors() {
+    
+    this.doct.getAllDoctors().subscribe(
+      data => this.handleResponseData(data, GET_DOCT),
+      error => this.handleError(error)
+    );
+  }
+  slotSelection(i) {
+    console.log("New Slot")
+    this.slots.filter(dat => {
+      dat.selected = false;
+    })
+    this.slots[i].selected = true;
+    this.selectedSlot=this.slots[i]
+    this.slotsForm.controls['date'].patchValue(this.datepipe.transform(this.doctorForm.value.date, 'yyyy-MM-dd')) 
+    this.slotsForm.controls['slot_id'].patchValue(this.slots[i].id)
+    this.slotsForm.controls['doct_id'].patchValue(this.doctorForm.value.doct_id)
+  }
+
+  
+handleResponseData(data,toggle) {
+  if(toggle==GET_DOCT){
+    console.log(data)
+    this.doctors=data.data;
+  }
+  else if(toggle==GET_TIME){
+    this.slots = data.slots;
+    this.slots.filter(dat => {
+      dat.selected = false;
+
+    })
+    console.log(this.slots)
+  }
+  
+}
+handleError(error) {
+  console.log(error)
+}
 
 }
