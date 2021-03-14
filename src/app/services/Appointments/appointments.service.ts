@@ -61,4 +61,12 @@ export class AppointmentsService {
     })
     );
    }
+   bookAppointment(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .post<any>(this.url + "book-appointment",data, { headers }).pipe(map(res => {
+      return res  
+    })
+    );
+   }
 }

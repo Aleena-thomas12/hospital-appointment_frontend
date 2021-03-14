@@ -26,7 +26,7 @@ export class SignUpPageComponent implements OnInit {
     this.patForm = this.formBuilder.group({
       name: ['', Validators.required],
       password: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern("[0-9 ]{11}")]],
+      phone: ['', [Validators.required, Validators.pattern("[0-9 ]{10}")]],
       email: ['', [Validators.required,Validators.email]],
       address: ['', Validators.required],
       blood: ['', Validators.required],

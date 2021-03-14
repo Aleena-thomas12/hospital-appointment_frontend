@@ -26,7 +26,7 @@
         </div>
       </form>
     </mat-step>
-    <mat-step label="Select a New Time" [stepControl]="slotsForm">
+    <mat-step label="Select a  Time" [stepControl]="slotsForm">
       <div style="display: flex;margin: auto;width: 100%;">
         <div class="row" style="width: 100%;">
           <div class="col-lg-1 col-md-2 col-sm-3" style="padding:12px;text-align: center;" *ngFor="let slot of slots;let i=index">
@@ -43,7 +43,9 @@
       <ng-template matStepLabel>Done</ng-template>
       <p style="text-align: center;font-size: larger;font-weight: bold;">Appointment Details</p>
       <div style="text-align: center;"> 
-        
+        <p>
+            <span>Doctor Name:&nbsp;</span><span style="font-weight: bold;">{{'Dr. '+selectedDoctor}}</span>
+          </p>
         <p>
           <span>Scheduled Date:&nbsp;</span><span style="font-weight: bold;">{{doctorForm.value?.date|date}}</span>
         </p>
@@ -54,7 +56,7 @@
       </div>
       <div style="text-align: center;margin-top: 2rem;" *ngIf="!apiState">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button class="btn" [disabled]="slotsForm.invalid" (click)="rescheduleAppointment(slotsForm.value)">Reschedule Appointment</button>
+        <button mat-button class="btn" [disabled]="slotsForm.invalid" (click)="bookAppointment(slotsForm.value)">Book  Appointment</button>
       </div>
       <div style="text-align: center;margin-top: 2rem;" *ngIf="apiState">
         <mat-spinner class="loading--spinner" [diameter]="50"></mat-spinner><br>

@@ -6,7 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppointmentsService } from 'src/app/services/Appointments/appointments.service';
 import { DoctorServicesService } from 'src/app/services/Doctors/doctor-services.service';
 const GET_DOCT = 1201;
-const GET_TIME=230;
+const GET_TIME = 230;
+const BOOK_APP = 220;
 @Component({
   selector: 'app-appointment-booking',
   templateUrl: './appointment-booking.component.html',
@@ -15,14 +16,15 @@ const GET_TIME=230;
 export class AppointmentBookingComponent implements OnInit {
 
   minDate: any
-  doctors: any
+  doctors: any = []
   doctorForm: FormGroup;
   slotsForm: FormGroup;
   slots: any = []
   selectedSlot: any
+  selectedDoctor: any
   apiState: boolean = false;
   constructor(private formBuilder: FormBuilder, private router: Router, public datepipe: DatePipe,
-    private snackBar: MatSnackBar, private app: AppointmentsService,private doct:DoctorServicesService) {
+    private snackBar: MatSnackBar, private app: AppointmentsService, private doct: DoctorServicesService) {
     this.minDate = new Date()
 
     this.getDoctors()
@@ -51,7 +53,7 @@ export class AppointmentBookingComponent implements OnInit {
     );
   }
   getDoctors() {
-    
+
     this.doct.getAllDoctors().subscribe(
       data => this.handleResponseData(data, GET_DOCT),
       error => this.handleError(error)
@@ -63,30 +65,52 @@ export class AppointmentBookingComponent implements OnInit {
       dat.selected = false;
     })
     this.slots[i].selected = true;
-    this.selectedSlot=this.slots[i]
-    this.slotsForm.controls['date'].patchValue(this.datepipe.transform(this.doctorForm.value.date, 'yyyy-MM-dd')) 
+    this.doctors.filter(res => {
+      if (res.id == this.doctorForm.value.doct_id) {
+        this.selectedDoctor = res.name;
+      }
+    })
+    this.selectedSlot = this.slots[i]
+    this.slotsForm.controls['date'].patchValue(this.datepipe.transform(this.doctorForm.value.date, 'yyyy-MM-dd'))
     this.slotsForm.controls['slot_id'].patchValue(this.slots[i].id)
     this.slotsForm.controls['doct_id'].patchValue(this.doctorForm.value.doct_id)
   }
 
-  
-handleResponseData(data,toggle) {
-  if(toggle==GET_DOCT){
-    console.log(data)
-    this.doctors=data.data;
-  }
-  else if(toggle==GET_TIME){
-    this.slots = data.slots;
-    this.slots.filter(dat => {
-      dat.selected = false;
+  bookAppointment(data) {
+this.apiState=true;
+    this.app.bookAppointment(data).subscribe(
+      data => this.handleResponseData(data, BOOK_APP),
+      error => this.handleError(error)
+    );
 
-    })
-    console.log(this.slots)
   }
-  
-}
-handleError(error) {
-  console.log(error)
-}
+
+  presentToast(msg) {
+    this.snackBar.open(msg, '', {
+      duration: 3000
+    });
+  }
+  handleResponseData(data, toggle) {
+    if (toggle == GET_DOCT) {
+      console.log(data)
+      this.doctors = data.data;
+    }
+    else if (toggle == GET_TIME) {
+      this.slots = data.slots;
+      this.slots.filter(dat => {
+        dat.selected = false;
+
+      })
+    }
+    else if(toggle==BOOK_APP){
+      this.apiState=false;
+      this.router.navigate(['/patient-sidemenu/booking-history'])
+      this.presentToast(data.message)
+    }
+
+  }
+  handleError(error) {
+    console.log(error)
+  }
 
 }
