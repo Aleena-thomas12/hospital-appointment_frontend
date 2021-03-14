@@ -70,6 +70,7 @@ import { SignUpPageComponent } from './patient-pages/sign-up-page/sign-up-page.c
 import { BookingHistoryComponent } from './patient-pages/booking-history/booking-history.component';
 import { PatientReschedulePageComponent } from './patient-pages/patient-reschedule-page/patient-reschedule-page.component';
 import { AppointmentBookingComponent } from './patient-pages/appointment-booking/appointment-booking.component';
+import { AccountSettingsPageComponent } from './patient-pages/account-settings-page/account-settings-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,7 +105,8 @@ import { AppointmentBookingComponent } from './patient-pages/appointment-booking
     SignUpPageComponent,
     BookingHistoryComponent,
     PatientReschedulePageComponent,
-    AppointmentBookingComponent
+    AppointmentBookingComponent,
+    AccountSettingsPageComponent
     
 
     

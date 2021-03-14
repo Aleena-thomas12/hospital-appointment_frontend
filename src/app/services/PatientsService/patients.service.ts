@@ -73,4 +73,20 @@ export class PatientsService {
       })
       );
   }
+  getAccountInfo(){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .get<any>(this.url + "get-pat_account-info",{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+  editAccountInfo(data){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .post<any>(this.url + "edit-pat_account-info", data,{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }

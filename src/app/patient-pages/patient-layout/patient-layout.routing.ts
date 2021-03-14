@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { AccountSettingsPageComponent } from "../account-settings-page/account-settings-page.component";
 import { AppointmentBookingComponent } from "../appointment-booking/appointment-booking.component";
 import { BookingHistoryComponent } from "../booking-history/booking-history.component";
 import { PatientHomeComponent } from "../patient-home/patient-home.component";
@@ -27,6 +28,10 @@ export const PatientLayout: Routes = [
     {
       path:"book-appointment",
       component:AppointmentBookingComponent
+    },
+    {
+      path:"account-settings",
+      component:AccountSettingsPageComponent
     }
     
   ];

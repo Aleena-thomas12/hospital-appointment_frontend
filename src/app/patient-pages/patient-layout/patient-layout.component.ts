@@ -12,7 +12,7 @@ export class PatientLayoutComponent implements OnInit {
   side_pages: Array<any> = [
     { id: 1, name: "Home",icon:'dashboard', url: "/patient-sidemenu/home" },
     { id: 2, name: "Booking History",icon:'event_note', url: "/patient-sidemenu/booking-history" },
-    { id: 3, name: "Account Settings",icon:'admin_panel_settings', url: "/patient-sidemenu/admin-info" },
+    { id: 3, name: "Account Settings",icon:'admin_panel_settings', url: "/patient-sidemenu/account-settings" },
     { id: 3, name: "Log Out",icon:'logout', url: "/patient-sidemenu/admin-info" },
 
   ];
