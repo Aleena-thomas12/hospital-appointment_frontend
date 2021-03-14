@@ -69,6 +69,7 @@ import { PasswordResetLinkComponent } from './patient-pages/password-reset-link/
 import { SignUpPageComponent } from './patient-pages/sign-up-page/sign-up-page.component';
 import { BookingHistoryComponent } from './patient-pages/booking-history/booking-history.component';
 import { PatientReschedulePageComponent } from './patient-pages/patient-reschedule-page/patient-reschedule-page.component';
+import { AppointmentBookingComponent } from './patient-pages/appointment-booking/appointment-booking.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,8 @@ import { PatientReschedulePageComponent } from './patient-pages/patient-reschedu
     PasswordResetLinkComponent,
     SignUpPageComponent,
     BookingHistoryComponent,
-    PatientReschedulePageComponent
+    PatientReschedulePageComponent,
+    AppointmentBookingComponent
     
 
     

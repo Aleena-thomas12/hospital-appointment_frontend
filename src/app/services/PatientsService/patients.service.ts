@@ -64,4 +64,13 @@ export class PatientsService {
       })
       );
   }
+
+  getHomePageData(){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .get<any>(this.url + "get-pat_home-info",{ headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
 }

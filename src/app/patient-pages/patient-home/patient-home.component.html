@@ -1,1 +1,31 @@
-<p>patient-home works!</p>
+<div class="main">
+  <div class="centre-block">
+
+    <div class="custom-card">
+      <div>
+        <img src="assets\images\schedule.png">
+      </div>
+      <div class="custom-card--title text-center">
+        My Appointments
+      </div>
+      <div class="custom-card--sub_title ">
+        <div class="count_section">
+          <div class="count">
+            <span style="display: block;font-weight: bold;">{{appointments?.app}}</span>
+            <span style="display: block;font-weight: bold;">Appointments</span>
+          </div>
+          <div class="count">
+            <span style="display: block;color: red;font-weight: bold;">{{appointments?.canceled}}</span>
+            <span style="display: block;color: red;font-weight: bold;">Canceled</span>
+          </div>
+        </div>
+        
+        <footer style="margin-top: 1rem;width: 100%;">
+          <button mat-raised-button color="warn" style="width: 100%;" (click)="bookAppointment()"><mat-icon>add</mat-icon> Book an Appointment</button>
+          <button mat-raised-button color="primary" style="width: 100%;margin-top: 1rem;" (click)="viewPastBookings()"><mat-icon>visibility</mat-icon>View Past Bookings</button>
+        </footer> 
+      </div>
+    </div>
+  </div>
+
+</div>

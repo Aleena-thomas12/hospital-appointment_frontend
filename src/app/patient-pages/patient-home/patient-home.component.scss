@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+.main{
+    display: flex;
+    width: 90vw;
+    height: 84vh;
+}
+.centre-block{
+
+    margin: auto;
+    min-width: 30vw;
+}
+.count_section{
+    display: flex;
+    width: 100%;
+}
+.count{
+    width: 100%;
+}
+.custom-card{
+    // width: 250px;
+    padding: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    &--title{
+        margin-top: 1rem;
+        font-weight: bold;
+        font-size:large;
+        letter-spacing: 4px;
+    }
+    &--sub_title{
+        margin-top: 1rem;
+    }
+  }
