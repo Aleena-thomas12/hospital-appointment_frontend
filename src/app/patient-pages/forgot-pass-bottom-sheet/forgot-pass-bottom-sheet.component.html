@@ -1,0 +1,25 @@
+<header style="text-align: center;font-size: x-large;font-weight: bold;margin-bottom: 1.5rem;margin-top: 1rem;">
+    Reset your Password
+</header>
+<section style="text-align: center;" *ngIf="state==0">
+     <form [formGroup]="passwordForm">
+        <p >
+          <mat-form-field appearance="outline">
+            <mat-label>Your Email </mat-label>
+            <input matInput formControlName="email" placeholder="Your Email" type="email">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </p>
+          <p >
+            <button mat-button style="background-color: dodgerblue;color: white;" (click)="saveChanges(passwordForm.value)" [disabled]="passwordForm.invalid">Get Reset Link</button>
+          </p>
+        </form>
+</section>
+<section style="text-align: center;" *ngIf="state==2">
+    <mat-spinner class="loading--spinner" [diameter]="50" ></mat-spinner>
+</section>
+<section style="text-align: center;" *ngIf="state==1">
+{{message}}
+</section>
+
+   

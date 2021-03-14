@@ -64,6 +64,8 @@ import { DatePipe } from '@angular/common';
 import { PatientLayoutComponent } from './patient-pages/patient-layout/patient-layout.component';
 import { PatientHomeComponent } from './patient-pages/patient-home/patient-home.component';
 import { JwtModule } from "@auth0/angular-jwt";
+import { ForgotPassBottomSheetComponent } from './patient-pages/forgot-pass-bottom-sheet/forgot-pass-bottom-sheet.component';
+import { PasswordResetLinkComponent } from './patient-pages/password-reset-link/password-reset-link.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +94,9 @@ import { JwtModule } from "@auth0/angular-jwt";
     CancelConfirmDialogComponent,
     ReschedulePageComponent,
     PatientLayoutComponent,
-    PatientHomeComponent
+    PatientHomeComponent,
+    ForgotPassBottomSheetComponent,
+    PasswordResetLinkComponent
     
 
     

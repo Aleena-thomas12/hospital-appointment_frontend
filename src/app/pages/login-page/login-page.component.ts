@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
+import { ForgotPassBottomSheetComponent } from 'src/app/patient-pages/forgot-pass-bottom-sheet/forgot-pass-bottom-sheet.component';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 const LOGIN = 12;
@@ -14,7 +16,7 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
   error_info: any = { message: "", state: false }
   constructor(private formBuilder: FormBuilder,
-    private auth: AuthService,
+    private auth: AuthService,private _bottomSheet: MatBottomSheet,
     private tokenservice: TokenService,
     private router: Router) { }
 
@@ -37,6 +39,9 @@ export class LoginPageComponent implements OnInit {
         error => this.handleError(error)
       );
     }
+  }
+  passwordReset() {
+   const bottomRef= this._bottomSheet.open(ForgotPassBottomSheetComponent);
   }
 
   handleResponseData(data, type) {

@@ -37,4 +37,18 @@ chnagePass(data){
   })
   );
 }
+passResetLink(data){
+  return this.httpClient
+      .post<any>(this.url + "pass-reset-link", data).pipe(map(res => {
+        return res
+      })
+      );
+}
+changeToNewPass(data){
+  return this.httpClient
+      .post<any>(this.url + "pass-reset-complete", data).pipe(map(res => {
+        return res
+      })
+      );
+}
 }
