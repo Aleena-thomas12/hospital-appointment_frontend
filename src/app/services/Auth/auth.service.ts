@@ -51,4 +51,11 @@ changeToNewPass(data){
       })
       );
 }
+signUp(data){
+  return this.httpClient
+  .post<any>(this.url + "sign-up", data).pipe(map(res => {
+    return res
+  })
+  );
+}
 }

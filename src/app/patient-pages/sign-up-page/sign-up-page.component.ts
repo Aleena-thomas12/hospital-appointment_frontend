@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { NursesService } from 'src/app/services/Nurses/nurses.service';
 import { PatientsService } from 'src/app/services/PatientsService/patients.service';
 const SAVE_INFO=111;
@@ -16,20 +17,20 @@ export class SignUpPageComponent implements OnInit {
   departments: any
   id:any
   patData:any
-  constructor(private formBuilder: FormBuilder,private router: Router, private ns: NursesService,
-     private snackBar: MatSnackBar,private pat: PatientsService,private route:ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder,private router: Router,  private auth: AuthService, private ns: NursesService,
+     private snackBar: MatSnackBar,private pat: PatientsService) {
      
   }
 
   ngOnInit(): void {
     this.patForm = this.formBuilder.group({
       name: ['', Validators.required],
+      password: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required,Validators.email]],
       address: ['', Validators.required],
-      blood: [1, Validators.required],
-      age: [1, Validators.required]
-
+      blood: ['', Validators.required],
+      age: ['', Validators.required]
     });
   }
   get doctorData() {
@@ -37,9 +38,8 @@ export class SignUpPageComponent implements OnInit {
   }
 
  saveChanges(temp){
-  temp.id=Number(this.id);
   console.log(temp)
-  this.pat.editPatInfo(temp).subscribe(
+  this.auth.signUp(temp).subscribe(
     data => this.handleResponseData(data, SAVE_INFO),
     error => this.handleError(error)
   );
@@ -52,14 +52,15 @@ export class SignUpPageComponent implements OnInit {
   handleResponseData(recieved_data, toggle) {
 if (toggle == SAVE_INFO) {
      this.presentToast(recieved_data.message)
-     this.patForm.reset();
-     setTimeout(()=>{ this.router.navigate(['/sidemenu/view-patients']) }, 1000)
+    //  this.patForm.reset();
+     setTimeout(()=>{ this.router.navigate(['login']) }, 1000)
      
      }
 
   }
-  handleError(error) {
-    console.log(error)
+  handleError(err) {
+    let re=err.error
+    this.presentToast(re.message)
   }
 
 }
