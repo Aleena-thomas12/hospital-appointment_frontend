@@ -28,6 +28,17 @@ export class PatientsService {
       })
       );
   }
+
+  getPatBookings() {
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+      .get<any>(this.url + "get_pat_bookings", { headers }).pipe(map(res => {
+        return res
+      })
+      );
+  }
+
+
   getPatInfo(data){
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
