@@ -1,7 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/services/auth/auth.service';
+const LOGOUT=198;
 @Component({
   selector: 'app-home-layout',
   templateUrl: './home-layout.component.html',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeLayoutComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,    private auth: AuthService) { }
   mobileQuery: MediaQueryList;
   side_pages: Array<any> = [
     { id: 1, name: "Dashboard",icon:'dashboard', url: "/sidemenu/home" },
@@ -28,8 +29,29 @@ export class HomeLayoutComponent implements OnInit {
     return localStorage.getItem('name')
   }
   navigate(i){
-    console.log(this.side_pages[i].url)
+    if(this.side_pages[i].id==6)
+    {
+      this.auth.onLogout().subscribe(
+        data => this.handleResponseData(data, LOGOUT),
+        error => this.handleError(error)
+      );
+    }
+    else{
     this.router.navigate([this.side_pages[i].url])
+    }
+  
   }
+  handleResponseData(data, type) {
+ if(type==LOGOUT)
+ {
+    console.log(data)
+    localStorage.clear();
+    this.router.navigate(['login']);
+ }
+  }
+  handleError(err) {
+    let re = err.error;
+  }
+
 
 }

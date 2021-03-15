@@ -21,6 +21,14 @@ url:any
       })
       );
   }
+  onLogout(){
+    const headers = this.appSettings.getHttpClientHeaders();
+    return this.httpClient
+    .get<any>(this.url + "logout", { headers }).pipe(map(res => {
+      return res
+    })
+    );
+}
   changeEmail(data){
     const headers = this.appSettings.getHttpClientHeaders();
     return this.httpClient
