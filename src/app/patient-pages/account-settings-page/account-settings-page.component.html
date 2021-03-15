@@ -45,9 +45,9 @@
       <footer style="text-align: center;margin-top: 1rem;" class="fixed_bar">
         <button mat-button class="save-btn" (click)="saveChanges(patForm.value)" [disabled]="patForm.invalid">Save
           Changes</button><br><br>
-          <button mat-raised-button color="primary" (click)="saveChanges(patForm.value)" >Change Email</button>
+          <button mat-raised-button color="primary" (click)="changeEmail()" >Change Email</button>
           &nbsp;&nbsp;
-          <button mat-raised-button color="warn" (click)="saveChanges(patForm.value)" >Change Password</button>
+          <button mat-raised-button color="warn" (click)="changePassword()" >Change Password</button>
       </footer>
     </form>
 

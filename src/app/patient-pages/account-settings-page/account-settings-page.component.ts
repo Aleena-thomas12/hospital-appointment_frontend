@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NursesService } from 'src/app/services/Nurses/nurses.service';
 import { PatientsService } from 'src/app/services/PatientsService/patients.service';
+import { PatChangeEmailBottomComponent } from '../pat-change-email-bottom/pat-change-email-bottom.component';
+import { PatChangePasswordBottomComponent } from '../pat-change-password-bottom/pat-change-password-bottom.component';
 const GET_INFO=112;
 const SAVE_INFO=223;
 @Component({
@@ -16,8 +19,8 @@ export class AccountSettingsPageComponent implements OnInit {
   departments: any
   id:any
   patData:any
-  constructor(private formBuilder: FormBuilder,private router: Router, private ns: NursesService,
-     private snackBar: MatSnackBar,private pat: PatientsService,private route:ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder,private router: Router, private ns: NursesService,private _bottomSheet: MatBottomSheet,
+     private snackBar: MatSnackBar,private pat: PatientsService) {
       this.getPatInfo()
   }
 
@@ -49,6 +52,12 @@ export class AccountSettingsPageComponent implements OnInit {
     error => this.handleError(error)
   );
  }
+ changeEmail(){
+  this._bottomSheet.open(PatChangeEmailBottomComponent);
+ }
+ changePassword(){
+  this._bottomSheet.open(PatChangePasswordBottomComponent);
+ }
   presentToast(msg) {
     this.snackBar.open(msg, '', {
       duration: 3000
@@ -68,8 +77,7 @@ export class AccountSettingsPageComponent implements OnInit {
     }
     else if (toggle == SAVE_INFO) {
      this.presentToast(recieved_data.message)
-     this.patForm.reset();
-     setTimeout(()=>{ this.router.navigate(['/sidemenu/view-patients']) }, 1000)
+    //  setTimeout(()=>{ this.router.navigate(['/sidemenu/view-patients']) }, 1000)
      
      }
 

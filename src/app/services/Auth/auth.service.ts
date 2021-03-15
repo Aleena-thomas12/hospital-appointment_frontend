@@ -58,4 +58,12 @@ signUp(data){
   })
   );
 }
+changePatEmail(data){
+  const headers = this.appSettings.getHttpClientHeaders();
+  return this.httpClient
+  .post<any>(this.url + "change-pat-email", data, { headers }).pipe(map(res => {
+    return res
+  })
+  );
+}
 }

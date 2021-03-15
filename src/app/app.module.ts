@@ -71,6 +71,8 @@ import { BookingHistoryComponent } from './patient-pages/booking-history/booking
 import { PatientReschedulePageComponent } from './patient-pages/patient-reschedule-page/patient-reschedule-page.component';
 import { AppointmentBookingComponent } from './patient-pages/appointment-booking/appointment-booking.component';
 import { AccountSettingsPageComponent } from './patient-pages/account-settings-page/account-settings-page.component';
+import { PatChangeEmailBottomComponent } from './patient-pages/pat-change-email-bottom/pat-change-email-bottom.component';
+import { PatChangePasswordBottomComponent } from './patient-pages/pat-change-password-bottom/pat-change-password-bottom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +108,9 @@ import { AccountSettingsPageComponent } from './patient-pages/account-settings-p
     BookingHistoryComponent,
     PatientReschedulePageComponent,
     AppointmentBookingComponent,
-    AccountSettingsPageComponent
+    AccountSettingsPageComponent,
+    PatChangeEmailBottomComponent,
+    PatChangePasswordBottomComponent
     
 
     
